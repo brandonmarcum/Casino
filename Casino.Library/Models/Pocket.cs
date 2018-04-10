@@ -7,9 +7,9 @@ namespace Casino.Library.Models
 {
     public class Pocket
     {
-        public List<Chips> PocketChips{ get; set; }
+        public List<Chips> AllChips{ get; set; }
         public Pocket(){
-            PocketChips = new List<Chips>();
+            AllChips = new List<Chips>();
         }
         public void cashOutPocket()
         {
