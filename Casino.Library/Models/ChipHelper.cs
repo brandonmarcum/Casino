@@ -3,22 +3,37 @@ using Casino.Library.Enums;
 
 namespace Casino.Library.Models
 {
+
+    //CHIPHELPER IS MEANT TO BE USED WITH POCKET, USERS, GAMES (WHATEVER DEALS WITH CHIPS) TO CALCULATE AND MANAGE CHIPS
     public class ChipHelper
     {
+        private User _chipUser;
         public ChipHelper()
         {
-            Pocket = ChipUser.UserPocket;
+            Pocket = new Pocket();
         }
-        public List<Chips> Pocket{ get; set; }
-        public User ChipUser{ get; set; }
+        public Pocket Pocket{ get; set; }
+        public User ChipUser{ 
+            get
+            {
+                return _chipUser;
+            }
+            set
+            { 
+                //whenever a user is set to a chiphelper, the pocket is also set to the user's pocket
+                
+                _chipUser = value;
+                Pocket = _chipUser.UserPocket;
+            } 
+        }
 
-        public int totalChipsOfType(TypeEnums type)
+        public int totalChipsOfType(string type)
         {
             int count = 0;
             switch (type)
             {
-                case (TypeEnums.white):
-                    foreach(var item in Pocket)
+                case (ChipTypes.White):
+                    foreach(var item in Pocket.PocketChips)
                     {
                         if(item.Type.Equals(TypeEnums.white))
                         {
@@ -26,8 +41,8 @@ namespace Casino.Library.Models
                         }
                     }
                 break;
-                 case (TypeEnums.red):
-                    foreach(var item in Pocket)
+                 case (ChipTypes.Red):
+                    foreach(var item in Pocket.PocketChips)
                     {
                         if(item.Type.Equals(TypeEnums.red))
                         {
@@ -35,8 +50,8 @@ namespace Casino.Library.Models
                         }
                     }
                 break;
-                 case (TypeEnums.blue):
-                    foreach(var item in Pocket)
+                 case (ChipTypes.Blue):
+                    foreach(var item in Pocket.PocketChips)
                     {
                         if(item.Type.Equals(TypeEnums.blue))
                         {
@@ -44,8 +59,8 @@ namespace Casino.Library.Models
                         }
                     }
                 break;
-                 case (TypeEnums.green):
-                    foreach(var item in Pocket)
+                 case (ChipTypes.Green):
+                    foreach(var item in Pocket.PocketChips)
                     {
                         if(item.Type.Equals(TypeEnums.green))
                         {
@@ -53,8 +68,8 @@ namespace Casino.Library.Models
                         }
                     }
                 break;
-                 case (TypeEnums.black):
-                    foreach(var item in Pocket)
+                 case (ChipTypes.Black):
+                    foreach(var item in Pocket.PocketChips)
                     {
                         if(item.Type.Equals(TypeEnums.black))
                         {
@@ -62,8 +77,8 @@ namespace Casino.Library.Models
                         }
                     }
                 break;
-                 case (TypeEnums.purple):
-                    foreach(var item in Pocket)
+                 case (ChipTypes.Purple):
+                    foreach(var item in Pocket.PocketChips)
                     {
                         if(item.Type.Equals(TypeEnums.purple))
                         {
@@ -71,8 +86,8 @@ namespace Casino.Library.Models
                         }
                     }
                 break;
-                 case (TypeEnums.orange):
-                    foreach(var item in Pocket)
+                 case (ChipTypes.Orange):
+                    foreach(var item in Pocket.PocketChips)
                     {
                         if(item.Type.Equals(TypeEnums.orange))
                         {
@@ -80,19 +95,14 @@ namespace Casino.Library.Models
                         }
                     }
                 break;
-            
-                default:
-                break;
-
-                return count;
             }
             
-            return 0;
+            return count;
         }
 
         public void AddToPocket(Chips chips)
         {
-            Pocket.Add(chips);
+            Pocket.PocketChips.Add(chips);
         }
         public void RemoveFromPocket(Chips chips, int amount)
         {

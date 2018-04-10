@@ -8,11 +8,13 @@ namespace Casino.Library.Models
         public User()
         {
             UserID = DateTime.Now.Ticks;
-            UserPocket = new List<Chips>();
+            UserPocket = new Pocket();
         }
         public string Username{ get; set; }
         public long UserID{ get; private set; }
-
-        public List<Chips> UserPocket{ get; set; }
+        public string Name{ get; set; }
+        public int Age{ get; set; }
+        public string Email{ get; set; }
+        public Pocket UserPocket{ get; set; }
     }
 }
