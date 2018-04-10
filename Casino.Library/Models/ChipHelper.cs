@@ -5,14 +5,17 @@ namespace Casino.Library.Models
 {
 
     //CHIPHELPER IS MEANT TO BE USED WITH POCKET, USERS, GAMES (WHATEVER DEALS WITH CHIPS) TO CALCULATE AND MANAGE CHIPS
+    //CHIPHELPER ONLY NEEDS A USER TO FUNCTION. IF NO USER, CHIPHELPER NEEDS A POCKET.
     public class ChipHelper
     {
         private User _chipUser;
         public ChipHelper()
         {
             Pocket = new Pocket();
+            PocketChips = Pocket.AllChips;
         }
         public Pocket Pocket{ get; set; }
+        public List<Chips> PocketChips{ get; set; }
         public User ChipUser{ 
             get
             {
@@ -21,7 +24,6 @@ namespace Casino.Library.Models
             set
             { 
                 //whenever a user is set to a chiphelper, the pocket is also set to the user's pocket
-                
                 _chipUser = value;
                 Pocket = _chipUser.UserPocket;
             } 
@@ -33,7 +35,7 @@ namespace Casino.Library.Models
             switch (type)
             {
                 case (ChipTypes.White):
-                    foreach(var item in Pocket.PocketChips)
+                    foreach(var item in Pocket.AllChips)
                     {
                         if(item.Type.Equals(TypeEnums.white))
                         {
@@ -42,7 +44,7 @@ namespace Casino.Library.Models
                     }
                 break;
                  case (ChipTypes.Red):
-                    foreach(var item in Pocket.PocketChips)
+                    foreach(var item in Pocket.AllChips)
                     {
                         if(item.Type.Equals(TypeEnums.red))
                         {
@@ -51,7 +53,7 @@ namespace Casino.Library.Models
                     }
                 break;
                  case (ChipTypes.Blue):
-                    foreach(var item in Pocket.PocketChips)
+                    foreach(var item in Pocket.AllChips)
                     {
                         if(item.Type.Equals(TypeEnums.blue))
                         {
@@ -60,7 +62,7 @@ namespace Casino.Library.Models
                     }
                 break;
                  case (ChipTypes.Green):
-                    foreach(var item in Pocket.PocketChips)
+                    foreach(var item in Pocket.AllChips)
                     {
                         if(item.Type.Equals(TypeEnums.green))
                         {
@@ -69,7 +71,7 @@ namespace Casino.Library.Models
                     }
                 break;
                  case (ChipTypes.Black):
-                    foreach(var item in Pocket.PocketChips)
+                    foreach(var item in Pocket.AllChips)
                     {
                         if(item.Type.Equals(TypeEnums.black))
                         {
@@ -78,7 +80,7 @@ namespace Casino.Library.Models
                     }
                 break;
                  case (ChipTypes.Purple):
-                    foreach(var item in Pocket.PocketChips)
+                    foreach(var item in Pocket.AllChips)
                     {
                         if(item.Type.Equals(TypeEnums.purple))
                         {
@@ -87,7 +89,7 @@ namespace Casino.Library.Models
                     }
                 break;
                  case (ChipTypes.Orange):
-                    foreach(var item in Pocket.PocketChips)
+                    foreach(var item in Pocket.AllChips)
                     {
                         if(item.Type.Equals(TypeEnums.orange))
                         {
@@ -100,14 +102,29 @@ namespace Casino.Library.Models
             return count;
         }
 
-        public void AddToPocket(Chips chips)
+        public void AddToPocket(Chips chips, int amount)
         {
-            Pocket.PocketChips.Add(chips);
+            chips.Amount = amount;
+            Pocket.AllChips.Add(chips);
         }
         public void RemoveFromPocket(Chips chips, int amount)
         {
-            
+            Pocket.AllChips.Remove(chips);
+            if((chips.Amount - amount) > 0)
+            {
+                chips.Amount = chips.Amount - amount;
+            }
+            else 
+            {
+                chips.Amount = 0;
+            }
+            Pocket.AllChips.Add(chips);
         }
+
+        // public double convertChips(Chips chips)
+        // {
+            
+        // }
         
         
     }
