@@ -8,23 +8,25 @@ namespace Casino.Library.Games
     {
         public int playerTotal;
         public int dealerTotal;
-        Random rand;
         string status;
 
         public Blackjack()
         {
             playerTotal = 0;
             dealerTotal = 0;
+            status = "playing";
         }
 
         public void NextTurn()
         {
             status = PlayerHit();
-            status = DealerHit();
+            if(status == "playing")
+                status = DealerHit();
         }
 
         public string PlayerHit()
         {
+            Random rand = new Random();
             int random = rand.Next(1, 14);
             if (random > 10)
                 random = 10;
