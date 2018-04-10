@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Casino.Library.Games
 {
-    class Blackjack
+    public class Blackjack
     {
         public int playerTotal;
         public int dealerTotal;
