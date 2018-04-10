@@ -9,5 +9,3 @@ namespace Casino.Client.Models
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
 }
-//my change
-//hello

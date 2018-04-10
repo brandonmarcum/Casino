@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Casino.Library.Enums;
 
 namespace Casino.Library.Models
 {
