@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Casino.Library.Enums;
 
 namespace Casino.Library.Models
 {
@@ -37,7 +36,7 @@ namespace Casino.Library.Models
                 case (ChipTypes.White):
                     foreach(var item in Pocket.AllChips)
                     {
-                        if(item.Type.Equals(TypeEnums.white))
+                        if(item.Type.Equals(ChipTypes.White))
                         {
                             count++;
                         }
@@ -46,7 +45,7 @@ namespace Casino.Library.Models
                  case (ChipTypes.Red):
                     foreach(var item in Pocket.AllChips)
                     {
-                        if(item.Type.Equals(TypeEnums.red))
+                        if(item.Type.Equals(ChipTypes.Red))
                         {
                             count++;
                         }
@@ -55,7 +54,7 @@ namespace Casino.Library.Models
                  case (ChipTypes.Blue):
                     foreach(var item in Pocket.AllChips)
                     {
-                        if(item.Type.Equals(TypeEnums.blue))
+                        if(item.Type.Equals(ChipTypes.Blue))
                         {
                             count++;
                         }
@@ -64,7 +63,7 @@ namespace Casino.Library.Models
                  case (ChipTypes.Green):
                     foreach(var item in Pocket.AllChips)
                     {
-                        if(item.Type.Equals(TypeEnums.green))
+                        if(item.Type.Equals(ChipTypes.Green))
                         {
                             count++;
                         }
@@ -73,7 +72,7 @@ namespace Casino.Library.Models
                  case (ChipTypes.Black):
                     foreach(var item in Pocket.AllChips)
                     {
-                        if(item.Type.Equals(TypeEnums.black))
+                        if(item.Type.Equals(ChipTypes.Black))
                         {
                             count++;
                         }
@@ -82,7 +81,7 @@ namespace Casino.Library.Models
                  case (ChipTypes.Purple):
                     foreach(var item in Pocket.AllChips)
                     {
-                        if(item.Type.Equals(TypeEnums.purple))
+                        if(item.Type.Equals(ChipTypes.Purple))
                         {
                             count++;
                         }
@@ -91,7 +90,7 @@ namespace Casino.Library.Models
                  case (ChipTypes.Orange):
                     foreach(var item in Pocket.AllChips)
                     {
-                        if(item.Type.Equals(TypeEnums.orange))
+                        if(item.Type.Equals(ChipTypes.Orange))
                         {
                             count++;
                         }
