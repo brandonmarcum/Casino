@@ -121,10 +121,10 @@ namespace Casino.Library.Models
             Pocket.AllChips.Add(chips);
         }
 
-        // public double convertChips(Chips chips)
-        // {
-            
-        // }
+        public double convertChips(Chips chips)
+        {
+            return chips.Amount*chips.Value;
+        }
         
         
     }
