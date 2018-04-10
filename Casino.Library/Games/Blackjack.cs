@@ -51,6 +51,7 @@ namespace Casino.Library.Games
 
         public string DealerHit()
         {
+            Random rand = new Random();
             int random = rand.Next(1, 14);
             if (random > 10)
                 random = 10;
