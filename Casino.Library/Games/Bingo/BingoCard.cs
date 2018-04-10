@@ -16,6 +16,11 @@ namespace Casino.Library.Games.Bingo
             }
         }
 
+        public List<int> GetRow(int i)
+        {
+            return card[i];
+        }
+
         public List<int> FillRow()
         {
             List<int> row = new List<int>();
