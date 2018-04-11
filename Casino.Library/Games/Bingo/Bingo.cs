@@ -8,11 +8,13 @@ namespace Casino.Library.Games.Bingo
     {
         public int chipLimit;
         public BingoCard bingoCard;
+        public string status;
 
         public Bingo(int chips)
         {
             chipLimit = chips;
             bingoCard = new BingoCard();
+            status = "playing";
         }
 
         public int RollNumber()
@@ -41,7 +43,7 @@ namespace Casino.Library.Games.Bingo
 
         public void CheckForBingo()
         {
-
+            status = bingoCard.CheckRows();
         }
 
 

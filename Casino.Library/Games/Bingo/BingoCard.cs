@@ -35,5 +35,40 @@ namespace Casino.Library.Games.Bingo
             return row;
         }
 
+
+        public bool CheckRows()
+        {
+            foreach(var c in card)
+            {
+                int i = 5;
+                foreach(var r in c)
+                {
+                    if (r == 0)
+                        i--;
+                }
+                if (i == 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool CheckCollumn()
+        {
+            foreach (var c in card)
+            {
+                int u = 0;
+                List<int> r = new List<int>();
+                //r.Add = { 5,5,5,5,5}
+
+
+
+                //if (r[] == 0)
+                    return true;
+            }
+
+            return false;
+        }
+
     }
 }

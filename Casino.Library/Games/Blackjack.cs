@@ -27,6 +27,8 @@ namespace Casino.Library.Games
                 status = PlayerHit();
             if(status == "playing" && !dealerStand)
                 status = DealerHit();
+            if (playerStand && dealerStand)
+                status = CheckTotals();
         }
 
         public void PlayerStand()
@@ -45,7 +47,7 @@ namespace Casino.Library.Games
                 if(playerTotal == 10)
                     return "win";
                 if (playerTotal < 10)
-                    random = 1;
+                    random = 11;
             }
 
 
@@ -86,6 +88,14 @@ namespace Casino.Library.Games
                 dealerStand = true;
 
             return "playing";
+        }
+
+        public string CheckTotals()
+        {
+            if (playerTotal > dealerTotal)
+                return "win";
+            else
+                return "lose";
         }
 
 
