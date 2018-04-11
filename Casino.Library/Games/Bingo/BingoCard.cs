@@ -55,17 +55,44 @@ namespace Casino.Library.Games.Bingo
 
         public bool CheckCollumn()
         {
-            foreach (var c in card)
+                for(int i = 0; i < 5; i++)
+                {
+                    int r = 5;
+                    for(int j = 0; i < 5; i++)
+                    {
+                        if (card[i][j] == 0)
+                        {
+                            r--;
+                            if (r == 0)
+                                return true;
+                        }
+                    }
+                }
+
+            return false;
+        }
+
+        public bool CheckDiagonals()
+        {
+            int u = 5;
+            for(int i = 0; i < 5;  i++)
             {
-                int u = 0;
-                List<int> r = new List<int>();
-                //r.Add = { 5,5,5,5,5}
-
-
-
-                //if (r[] == 0)
-                    return true;
+                if (card[i][i] == 0)
+                    u--;
             }
+            if (u == 0)
+                return true;
+
+            u = 5;
+            for (int i = 0; i < 5; i++)
+            {
+                int j = 4-i;
+
+                if (card[i][j] == 0)
+                    u--;
+            }
+            if (u == 0)
+                return true;
 
             return false;
         }

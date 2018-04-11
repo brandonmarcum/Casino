@@ -38,12 +38,22 @@ namespace Casino.Library.Games.Bingo
                 }
             }
 
+            CheckForBingo();
+
             chipLimit--;
+
+            if (chipLimit == 0 && status != "win")
+                status = "lose";
         }
 
         public void CheckForBingo()
         {
-            status = bingoCard.CheckRows();
+            if (bingoCard.CheckRows())
+                status = "win";
+            if (bingoCard.CheckCollumn())
+                status = "win";
+            if (bingoCard.CheckDiagonals())
+                status = "win";
         }
 
 

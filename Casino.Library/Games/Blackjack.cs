@@ -27,6 +27,7 @@ namespace Casino.Library.Games
                 status = PlayerHit();
             if(status == "playing" && !dealerStand)
                 status = DealerHit();
+
         }
 
         public void PlayerStand()
