@@ -1,7 +1,12 @@
-@{
-    ViewData["Title"] = "About";
-}
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+@model Casino.Client.Models.BlackJackViewModel
 
-<p>Use this area to provide additional information.</p>
+@using(@Html.BeginForm())
+{
+<p>Playing Blackjack!</p>
+<p>@ViewData["game"]</p>
+
+<button type="submit" value="hit">Hit Me</button>
+<button type="submit" value="stand">Stand</button>
+
+}
+

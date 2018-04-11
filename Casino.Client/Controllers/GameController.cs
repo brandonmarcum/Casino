@@ -14,11 +14,20 @@ namespace Casino.Client.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult BlackJack()
         {
-           
-
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BlackJack(string value, BlackJackViewModel model)
+        {
+            if(value.Equals("hit"))
+            {
+                model.Blackjack.PlayerHit();
+                model.Blackjack.DealerHit();
+                ViewData["game"] = model.Blackjack.status;
+            }
             return View();
         }
     }

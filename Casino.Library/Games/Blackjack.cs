@@ -8,7 +8,7 @@ namespace Casino.Library.Games
     {
         public int playerTotal;
         public int dealerTotal;
-        string status;
+        public string status;
 
         public Blackjack()
         {
