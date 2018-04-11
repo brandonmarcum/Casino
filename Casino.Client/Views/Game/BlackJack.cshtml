@@ -1,0 +1,15 @@
+@model Casino.Client.Models.BlackJackViewModel
+
+@using(@Html.BeginForm())
+{
+<p>Playing Blackjack!</p>
+<p>@ViewData["game"]</p>
+<p>@ViewData["score"]</p>
+<p>@ViewData["dealer"]</p>
+
+
+<button type="submit" name="submitButton" value="hit">Hit Me</button>
+<button type="submit" name="submitButton" value="stand">Stand</button>
+
+}
+

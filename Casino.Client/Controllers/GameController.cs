@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Casino.Client.Models;
+using Casino.Library.Games;
 //my change hello
 namespace Casino.Client.Controllers
 {
@@ -14,21 +15,39 @@ namespace Casino.Client.Controllers
         {
             return View();
         }
+        // [HttpGet]
+        // public IActionResult BlackJack()
+        // {
+        //     BlackJackViewModel model = new BlackJackViewModel();
+        //     model.Blackjack = new Blackjack();
+        //     return View(model);
+        // }
         [HttpGet]
         public IActionResult BlackJack()
         {
+            TempData.Put("model", new BlackJackViewModel());
             return View();
         }
         [HttpPost]
-        public IActionResult BlackJack(string value, BlackJackViewModel model)
+        public IActionResult BlackJack(BlackJackViewModel model, string submitButton)
         {
-            if(value.Equals("hit"))
+            model = TempData.Get<BlackJackViewModel>("model");
+            
+            if(submitButton.Equals("hit"))
             {
-                model.Blackjack.PlayerHit();
-                model.Blackjack.DealerHit();
+                model.Blackjack.NextTurn();
+                ViewData["game"] = model.Blackjack.status;
+                ViewData["score"] = model.Blackjack.playerTotal;
+                ViewData["dealer"] = model.Blackjack.dealerTotal;
+            }
+            if(submitButton.Equals("stand"))
+            {
+                model.Blackjack.PlayerStand();
+                model.Blackjack.NextTurn();
                 ViewData["game"] = model.Blackjack.status;
             }
-            return View();
+            TempData.Put("model", model);
+            return View(model);
         }
     }
 }

@@ -8,13 +8,9 @@ namespace Casino.Library.Games
     {
         public int playerTotal;
         public int dealerTotal;
-<<<<<<< HEAD
-        public string status;
-=======
         public bool playerStand;
         public bool dealerStand;
-        string status;
->>>>>>> master
+        public string status;
 
         public Blackjack()
         {
@@ -41,18 +37,17 @@ namespace Casino.Library.Games
         public string PlayerHit()
         {
             Random rand = new Random();
-            int random = rand.Next(1, 14);
-            if (random > 10)
-                random = 10;
-            if (random == 1)
-            {
-                if(playerTotal == 10)
-                    return "win";
-                if (playerTotal < 10)
-                    random = 1;
-            }
-
-
+            int random = rand.Next(1, 11);
+            // if (random > 11)
+            //     random = 10;
+            // if (random == 1)
+            // {
+            //     if(playerTotal == 10)
+            //         return "win";
+            //     if (playerTotal < 10)
+            //         random = 1;
+            // }
+            playerStand = false; 
             playerTotal += random;
 
 
@@ -60,22 +55,25 @@ namespace Casino.Library.Games
                 return "lose";
             if (playerTotal == 21)
                 return "win";
+            if(playerTotal>dealerTotal && dealerStand)
+                return "win";
+
             return "playing";
         }
 
         public string DealerHit()
         {
             Random rand = new Random();
-            int random = rand.Next(1, 14);
-            if (random > 10)
-                random = 10;
-            if (random == 1)
-            {
-                if (dealerTotal == 10)
-                    return "lose";
-                if (dealerTotal < 10)
-                    random = 1;
-            }
+            int random = rand.Next(1, 11);
+            // if (random > 10)
+            //     random = 10;
+            // if (random == 1)
+            // {
+            //     if (dealerTotal == 10)
+            //         return "lose";
+            //     if (dealerTotal < 10)
+            //         random = 1;
+            // }
 
 
             dealerTotal += random;
@@ -86,7 +84,7 @@ namespace Casino.Library.Games
             if (dealerTotal == 21)
                 return "lose";
 
-            if (dealerTotal - 15 <= 6)
+            if ((dealerTotal - 17 <= 4) && (dealerTotal - 15 > 0)) 
                 dealerStand = true;
 
             return "playing";
