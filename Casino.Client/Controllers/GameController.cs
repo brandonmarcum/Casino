@@ -15,13 +15,6 @@ namespace Casino.Client.Controllers
         {
             return View();
         }
-        // [HttpGet]
-        // public IActionResult BlackJack()
-        // {
-        //     BlackJackViewModel model = new BlackJackViewModel();
-        //     model.Blackjack = new Blackjack();
-        //     return View(model);
-        // }
         [HttpGet]
         public IActionResult BlackJack()
         {
@@ -32,7 +25,7 @@ namespace Casino.Client.Controllers
         public IActionResult BlackJack(BlackJackViewModel model, string submitButton)
         {
             model = TempData.Get<BlackJackViewModel>("model");
-            
+
             if(submitButton.Equals("hit"))
             {
                 model.Blackjack.NextTurn();

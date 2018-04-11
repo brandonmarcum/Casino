@@ -8,7 +8,6 @@ namespace Casino.Client.Models
         public string RequestId { get; set; }
         public Blackjack Blackjack{ get; set; }
         public int state{get; set;}
-
         public BlackJackViewModel()
         {
             Blackjack = new Blackjack();
