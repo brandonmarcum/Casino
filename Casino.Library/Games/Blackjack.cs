@@ -8,20 +8,34 @@ namespace Casino.Library.Games
     {
         public int playerTotal;
         public int dealerTotal;
+<<<<<<< HEAD
         public string status;
+=======
+        public bool playerStand;
+        public bool dealerStand;
+        string status;
+>>>>>>> master
 
         public Blackjack()
         {
             playerTotal = 0;
             dealerTotal = 0;
             status = "playing";
+            playerStand = false;
+            dealerStand = false;
         }
-
+        
         public void NextTurn()
         {
-            status = PlayerHit();
-            if(status == "playing")
+            if(!playerStand)
+                status = PlayerHit();
+            if(status == "playing" && !dealerStand)
                 status = DealerHit();
+        }
+
+        public void PlayerStand()
+        {
+            playerStand = true;
         }
 
         public string PlayerHit()
@@ -71,6 +85,10 @@ namespace Casino.Library.Games
                 return "win";
             if (dealerTotal == 21)
                 return "lose";
+
+            if (dealerTotal - 15 <= 6)
+                dealerStand = true;
+
             return "playing";
         }
 
