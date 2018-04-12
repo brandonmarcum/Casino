@@ -4,12 +4,19 @@
 {
 <p>Playing Blackjack!</p>
 <p>@ViewData["game"]</p>
-<p>@ViewData["score"]</p>
-<p>@ViewData["dealer"]</p>
+<p>Your Score: @ViewData["score"]</p>
+<p>Dealer Score: @ViewData["dealer"]</p>
 
-
-<button type="submit" name="submitButton" value="hit">Hit Me</button>
-<button type="submit" name="submitButton" value="stand">Stand</button>
+string hello = "playin";
+    if(Model.Blackjack.status.Equals("playing"))
+    {
+        <button type="submit" name="submitButton" value="hit">Hit Me</button>
+        <button type="submit" name="submitButton" value="stand">Stand</button>
+    }
+    else
+    {
+        <button type="submit" name="submitButton" value="play">Play Again</button>
+    }
 
 }
 
