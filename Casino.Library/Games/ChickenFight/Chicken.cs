@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Casino.Library.Games.ChickenFight
 {
-    class Chicken
+    public class Chicken
     {
         public int Health;
         public int Attack;
@@ -15,14 +15,7 @@ namespace Casino.Library.Games.ChickenFight
 
         public Chicken()
         {
-            Random rand = new Random();
-
-            StatTotal = 400;
-            int x = StatTotal / int.Parse(1.6.ToString());
-            Health = rand.Next(5, x);
-            int j = (StatTotal - x) / int.Parse(2.ToString());
-            Attack = rand.Next(5, j);
-            Evasion = StatTotal - (Health + Attack);
+            GenerateStats();
 
             Standing = true;
             Betted = false;
@@ -42,10 +35,22 @@ namespace Casino.Library.Games.ChickenFight
         {
             Random rand = new Random();
 
-            if (Evasion < rand.Next(StatTotal * int.Parse(1.5.ToString())))
+            if (Evasion < rand.Next(1, int.Parse((StatTotal * 1.5).ToString())))
                 return false;
             
             return true;
+        }
+
+        public void GenerateStats()
+        {
+            Random rand = new Random();
+
+            StatTotal = 400;
+            int x = int.Parse((StatTotal / 1.6).ToString());
+            Health = rand.Next(5, x);
+            int j = int.Parse(((StatTotal - x) / 2).ToString());
+            Attack = rand.Next(5, j);
+            Evasion = StatTotal - (Health + Attack);
         }
 
     }

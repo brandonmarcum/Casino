@@ -6,8 +6,8 @@ namespace Casino.Library.Games.ChickenFight
 {
     public class Fight
     {
-        Chicken chickenA;
-        Chicken chickenB;
+        public Chicken chickenA;
+        public Chicken chickenB;
 
         public Fight()
         {
@@ -45,7 +45,7 @@ namespace Casino.Library.Games.ChickenFight
             return CheckWin();
         }
 
-        private string CheckWin()
+        public string CheckWin()
         {
             if (chickenA.Betted && !chickenA.Standing)
                 return "lose";
@@ -55,15 +55,15 @@ namespace Casino.Library.Games.ChickenFight
                 return "win";
         }
 
-        private void ChickenATurn()
+        public void ChickenATurn()
         {
             if (!chickenB.Evade() && chickenA.Standing)
                 chickenB.DecreaseHealth(chickenA.Attack);
         }
 
-        private void ChickenBTurn()
+        public void ChickenBTurn()
         {
-            if (!chickenA.Evade())
+            if (!chickenA.Evade() && chickenB.Standing)
                 chickenA.DecreaseHealth(chickenB.Attack);
         }
     }
