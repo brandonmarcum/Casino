@@ -6,9 +6,12 @@ namespace Casino.Library.Games
 {
     public class Slots
     {
+        public string GameName = "Slots";
         public int left { get; set; }
         public int middle { get; set; }
         public int right { get; set; }
+        public string status { get; set; }
+
         public string status { get; set; }
 
         public Slots()
@@ -34,20 +37,35 @@ namespace Casino.Library.Games
             right = ChangeSlot();
         }
 
+        public void SetSlots()
+        {
+            SetLeft();
+            SetMiddle();
+            SetRight();
+        }
+        public void StopPlaying()
+        {
+            status = "finished";
+        }
+
 
         public int ChangeSlot()
         {
             Random random = new Random();
             //7 Slot (Rare)
+            //give back 1000 for 3 pairs
             if (random.Next(0, 8) == 1)
                 return 7;
             //Gold Slot (Uncommon)
+            //give back 500 for 3 pairs
             if (random.Next(0, 4) == 1)
                 return 1;
             //Silver Slot (Somewhat Common)
+            //give back 50 for 3 pairs
             if (random.Next(0, 3) == 1)
                 return 2;
             //Bronze Slot (Extremely Common)
+            //give back 25 for 3 pairs
             else
                 return 3;
         }
