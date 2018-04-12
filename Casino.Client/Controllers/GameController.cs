@@ -27,6 +27,7 @@ namespace Casino.Client.Controllers
             User newUser = new User();
             
 
+
             model = TempData.Get<BlackJackViewModel>("model");
             
             if(submitButton.Equals("hit"))
