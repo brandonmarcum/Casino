@@ -8,25 +8,25 @@ namespace Casino.Test
     {
 
         [Fact]
-        public void TRPS01ThrowRock()
+        public void T01ThrowRock()
         {
             RockPaperScissors rps = new RockPaperScissors("rock");
         }
 
         [Fact]
-        public void TRPS02ThrowPaper()
+        public void T02ThrowPaper()
         {
             RockPaperScissors rps = new RockPaperScissors("paper");
         }
 
         [Fact]
-        public void TRPS03ThrowScissors()
+        public void T03ThrowScissors()
         {
             RockPaperScissors rps = new RockPaperScissors("scissors");
         }
 
         [Fact]
-        public void TRPS04TestCPUChoices()
+        public void T04TestCPUChoices()
         {
             RockPaperScissors rps = new RockPaperScissors("paper");
 
@@ -38,7 +38,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS05PRockCScissors()
+        public void T05PRockCScissors()
         {
             RockPaperScissors rps = new RockPaperScissors("rock");
             rps.cpuChoice = "scissors";
@@ -46,7 +46,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS06PRockCRock()
+        public void T06PRockCRock()
         {
             RockPaperScissors rps = new RockPaperScissors("rock");
             rps.cpuChoice = "rock";
@@ -54,7 +54,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS07PRockCPaper()
+        public void T07PRockCPaper()
         {
             RockPaperScissors rps = new RockPaperScissors("rock");
             rps.cpuChoice = "paper";
@@ -62,7 +62,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS08PPaperCRock()
+        public void T08PPaperCRock()
         {
             RockPaperScissors rps = new RockPaperScissors("paper");
             rps.cpuChoice = "rock";
@@ -70,7 +70,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS09PPaperCPaper()
+        public void T09PPaperCPaper()
         {
             RockPaperScissors rps = new RockPaperScissors("paper");
             rps.cpuChoice = "paper";
@@ -78,7 +78,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS10PPaperCScissors()
+        public void T10PPaperCScissors()
         {
             RockPaperScissors rps = new RockPaperScissors("paper");
             rps.cpuChoice = "scissors";
@@ -86,7 +86,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS11PScissorsCRock()
+        public void T11PScissorsCRock()
         {
             RockPaperScissors rps = new RockPaperScissors("scissors");
             rps.cpuChoice = "rock";
@@ -94,7 +94,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS12ScissorsCPaper()
+        public void T12ScissorsCPaper()
         {
             RockPaperScissors rps = new RockPaperScissors("scissors");
             rps.cpuChoice = "paper";
@@ -102,7 +102,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS13PScissorsCScissors()
+        public void T13PScissorsCScissors()
         {
             RockPaperScissors rps = new RockPaperScissors("scissors");
             rps.cpuChoice = "scissors";
@@ -110,7 +110,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TRPS14GoldenTest()
+        public void T14GoldenTest()
         {
             RockPaperScissors rps = new RockPaperScissors("scissors");
             for (int i = 0; i < 500; i++)

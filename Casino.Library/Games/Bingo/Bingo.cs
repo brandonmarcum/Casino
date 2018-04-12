@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Casino.Library.Games.Bingo
 {
-    class Bingo
+    public class Bingo
     {
         public int chipLimit;
         public BingoCard bingoCard;

@@ -9,27 +9,27 @@ namespace Casino.Test
         Blackjack blackjack = new Blackjack();
 
         [Fact]
-        public void TBlackjack01Access()
+        public void T01Access()
         {
             Blackjack blackjack = new Blackjack();
         }
 
         [Fact]
-        public void TBlackjack02PlayerHit()
+        public void T02PlayerHit()
         {
             Assert.True(blackjack.PlayerHit() == "playing");
             Assert.False(blackjack.playerTotal == 0);
         }
 
         [Fact]
-        public void TBlackjack03DealerHit()
+        public void T03DealerHit()
         {
             Assert.True(blackjack.DealerHit() == "playing");
             Assert.False(blackjack.dealerTotal == 0);
         }
 
         [Fact]
-        public void TBlackjack04PlayerOver21()
+        public void T04PlayerOver21()
         {
             for(int i = 0; i<21; i++)
             {
@@ -39,7 +39,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack05DealerOver21()
+        public void T05DealerOver21()
         {
             for (int i = 0; i < 21; i++)
             {
@@ -49,7 +49,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack06DealerGreaterPlayer()
+        public void T06DealerGreaterPlayer()
         {
             blackjack.dealerTotal = 20;
             blackjack.playerTotal = 19;
@@ -57,7 +57,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack07DealerEqualsPlayer()
+        public void T07DealerEqualsPlayer()
         {
             blackjack.dealerTotal = 19;
             blackjack.playerTotal = 19;
@@ -65,7 +65,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack08DealerLessThanPlayer()
+        public void T08DealerLessThanPlayer()
         {
             blackjack.dealerTotal = 18;
             blackjack.playerTotal = 19;
@@ -73,7 +73,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack09Generate500Cards()
+        public void T09Generate500Cards()
         {
             for(int i = 0; i <500; i++)
             {
@@ -82,21 +82,21 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack10Check21PlayerGreater()
+        public void T10Check21PlayerGreater()
         {
             blackjack.playerTotal = 22;
             Assert.True(blackjack.Check21("player") == "lose");
         }
 
         [Fact]
-        public void TBlackjack11Check21PlayerEqual()
+        public void T11Check21PlayerEqual()
         {
             blackjack.playerTotal = 21;
             Assert.True(blackjack.Check21("player") == "win");
         }
 
         [Fact]
-        public void TBlackjack12Check21PlayerLessButDealerStand()
+        public void T12Check21PlayerLessButDealerStand()
         {
             blackjack.dealerStand = true;
             blackjack.dealerTotal = 18;
@@ -105,21 +105,21 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack13Check21DealerGreater()
+        public void T13Check21DealerGreater()
         {
             blackjack.dealerTotal = 22;
             Assert.True(blackjack.Check21("dealer") == "win");
         }
 
         [Fact]
-        public void TBlackjack14Check21DealerEqual()
+        public void T14Check21DealerEqual()
         {
             blackjack.dealerTotal = 21;
             Assert.True(blackjack.Check21("dealer") == "lose");
         }
 
         [Fact]
-        public void TBlackjack15Check21PlayerPlaying()
+        public void T15Check21PlayerPlaying()
         {
             blackjack.playerTotal = 20;
             blackjack.dealerStand = false;
@@ -127,14 +127,14 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack16Check21DealerPlaying()
+        public void T16Check21DealerPlaying()
         {
             blackjack.dealerTotal = 15;
             Assert.True(blackjack.Check21("dealer") == "playing");
         }
 
         [Fact]
-        public void TBlackjack17Check21PlayerLessButPlayerStand()
+        public void T17Check21PlayerLessButPlayerStand()
         {
             blackjack.PlayerStand();
             blackjack.dealerTotal = 19;
@@ -143,7 +143,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack18NextTurnNoStand()
+        public void T18NextTurnNoStand()
         {
             blackjack.playerTotal = 0;
             blackjack.dealerTotal = 0;
@@ -154,7 +154,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack19NextTurnPlayerStand()
+        public void T19NextTurnPlayerStand()
         {
             blackjack.PlayerStand();
             blackjack.playerTotal = 0;
@@ -166,7 +166,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack20NextTurnDealerStand()
+        public void T20NextTurnDealerStand()
         {
             blackjack.dealerStand = true;
             blackjack.playerTotal = 0;
@@ -178,7 +178,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack21CheckDealerStand()
+        public void T21CheckDealerStand()
         {
             blackjack.dealerTotal = 16;
             blackjack.CheckForDealerStand();
@@ -201,7 +201,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack22CheckNotDealerStand()
+        public void T22CheckNotDealerStand()
         {
             blackjack.dealerTotal = 5;
             blackjack.CheckForDealerStand();
@@ -222,7 +222,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack23GoldenTestA()
+        public void T23GoldenTestA()
         {
             Blackjack trueBlackjack = new Blackjack();
             while(trueBlackjack.status == "playing")
@@ -234,7 +234,7 @@ namespace Casino.Test
         }
 
         [Fact]
-        public void TBlackjack24GoldenTestB()
+        public void T24GoldenTestB()
         {
             //500 Games of Blackjack
             for (int i = 0; i < 500; i++)

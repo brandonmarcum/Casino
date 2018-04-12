@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Casino.Library.Games
 {
-    class RussianRoulette
+    public class RussianRoulette
     {
         public List<bool> PlayerGun;
         public List<bool> OpponentGun;

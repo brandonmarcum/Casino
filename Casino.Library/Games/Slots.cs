@@ -4,17 +4,19 @@ using System.Text;
 
 namespace Casino.Library.Games
 {
-    class Slots
+    public class Slots
     {
         public int left { get; set; }
         public int middle { get; set; }
         public int right { get; set; }
+        public string status { get; set; }
 
         public Slots()
         {
             left = 0;
             middle = 0;
             right = 0;
+            status = "playing";
         }
 
         public void SetLeft()
@@ -48,6 +50,14 @@ namespace Casino.Library.Games
             //Bronze Slot (Extremely Common)
             else
                 return 3;
+        }
+
+        public string CheckForMatch()
+        {
+            if (left == middle && middle == right)
+                return "win";
+
+            return "lose";
         }
     }
 }

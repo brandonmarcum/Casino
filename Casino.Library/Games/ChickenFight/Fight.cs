@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Casino.Library.Games.ChickenFight
 {
-    class Fight
+    public class Fight
     {
         Chicken chickenA;
         Chicken chickenB;
