@@ -8,11 +8,14 @@ namespace Casino.Library.Games
     {
         public List<bool> PlayerGun;
         public List<bool> OpponentGun;
-        int turn;
-        string status;
+        public int turn;
+        public string status;
 
         public RussianRoulette()
         {
+            PlayerGun = new List<bool>();
+            OpponentGun = new List<bool>();
+
             LoadGuns();
             turn = 0;
             status = "playing";
@@ -22,14 +25,14 @@ namespace Casino.Library.Games
         {
             for(int i = 0; i < 6; i++)
             {
-                PlayerGun[i] = false;
-                OpponentGun[i] = false;
+                PlayerGun.Add(false);
+                OpponentGun.Add(false);
             }
 
             Random random = new Random();
-            PlayerGun[random.Next(0, 7)] = true;
+            PlayerGun[random.Next(0, 6)] = true;
             Random random2 = new Random();
-            OpponentGun[random2.Next(0, 7)] = true;
+            OpponentGun[random2.Next(0, 6)] = true;
         }
 
         public void NextTurn()

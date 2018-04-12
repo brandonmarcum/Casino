@@ -12,6 +12,7 @@ namespace Casino.Test
         public void T01Access()
         {
             Blackjack blackjack = new Blackjack();
+            Assert.True(blackjack.status == "playing");
         }
 
         [Fact]
