@@ -6,6 +6,7 @@ namespace Casino.Library.Games
 {
     class RussianRoulette
     {
+        public string GameName = "Russian Roulette";
         public List<bool> PlayerGun;
         public List<bool> OpponentGun;
         int turn;
