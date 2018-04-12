@@ -6,6 +6,7 @@ namespace Casino.Library.Games
 {
     public class RockPaperScissors
     {
+        public string GameName = "Rock-Paper-Scissors";
         public string playerChoice { get; set; }
         public string cpuChoice { get; set; }
         public string status { get; set; }

@@ -6,6 +6,7 @@ namespace Casino.Library.Games
 {
     public class Slots
     {
+        public string GameName = "Slots";
         public int left { get; set; }
         public int middle { get; set; }
         public int right { get; set; }

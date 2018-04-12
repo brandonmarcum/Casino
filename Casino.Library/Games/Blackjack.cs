@@ -6,6 +6,7 @@ namespace Casino.Library.Games
 {
     public class Blackjack
     {
+        public string GameName = "Blackjack";
         public int playerTotal;
         public int dealerTotal;
         public bool playerStand;

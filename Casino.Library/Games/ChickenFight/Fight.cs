@@ -6,6 +6,7 @@ namespace Casino.Library.Games.ChickenFight
 {
     class Fight
     {
+        public string GameName = "Chicken Fight";
         Chicken chickenA;
         Chicken chickenB;
 
