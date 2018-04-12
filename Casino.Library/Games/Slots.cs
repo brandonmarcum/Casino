@@ -12,8 +12,6 @@ namespace Casino.Library.Games
         public int right { get; set; }
         public string status { get; set; }
 
-        public string status { get; set; }
-
         public Slots()
         {
             left = 0;
