@@ -27,6 +27,8 @@ namespace Casino.Library.Games
                 status = PlayerHit();
             if(status == "playing" && !dealerStand)
                 status = DealerHit();
+            if (status == "playing" && dealerStand && playerStand)
+                status = DecideOnWinner();
 
         }
 
@@ -37,57 +39,61 @@ namespace Casino.Library.Games
 
         public string PlayerHit()
         {
-            Random rand = new Random();
-            int random = rand.Next(1, 11);
-            // if (random > 11)
-            //     random = 10;
-            // if (random == 1)
-            // {
-            //     if(playerTotal == 10)
-            //         return "win";
-            //     if (playerTotal < 10)
-            //         random = 1;
-            // }
-            playerStand = false; 
-            playerTotal += random;
+            playerTotal += GenerateCard();
 
-
-            if (playerTotal > 21)
-                return "lose";
-            if (playerTotal == 21)
-                return "win";
-            if(playerTotal>dealerTotal && dealerStand)
-                return "win";
-
-            return "playing";
+            return Check21("player");
         }
 
         public string DealerHit()
         {
-            Random rand = new Random();
-            int random = rand.Next(1, 11);
-            // if (random > 10)
-            //     random = 10;
-            // if (random == 1)
-            // {
-            //     if (dealerTotal == 10)
-            //         return "lose";
-            //     if (dealerTotal < 10)
-            //         random = 1;
-            // }
+            dealerTotal += GenerateCard();
 
+            CheckForDealerStand();
 
-            dealerTotal += random;
+            return Check21("dealer");
+        }
 
-
-            if (dealerTotal > 21)
-                return "win";
-            if (dealerTotal == 21)
-                return "lose";
-
-            if ((dealerTotal - 17 <= 4) && (dealerTotal - 15 > 0)) 
+        public void CheckForDealerStand()
+        {
+            if ((dealerTotal >= 16) && (dealerTotal <= 21) && (dealerTotal >= playerTotal))
                 dealerStand = true;
+        }
 
+        public int GenerateCard()
+        {
+            Random rand = new Random();
+            return rand.Next(1, 11);
+        }
+
+        public string DecideOnWinner()
+        {
+            if (playerTotal > dealerTotal)
+                return "win";
+            else
+                return "lose";
+        }
+
+        public string Check21(string person)
+        {
+            if(person == "player")
+            {
+                if (playerTotal > 21)
+                    return "lose";
+                if (playerTotal == 21)
+                    return "win";
+                if (playerTotal > dealerTotal && dealerStand)
+                    return "win";
+            }
+            if(person == "dealer")
+            {
+                if (dealerTotal > 21)
+                    return "win";
+                if (dealerTotal == 21)
+                    return "lose";
+                if (playerTotal <= dealerTotal && playerStand)
+                    return "lose";
+            }
+            
             return "playing";
         }
 
