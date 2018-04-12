@@ -23,26 +23,20 @@ namespace Casino.Library.Games.Bingo
             return rand.Next(1, 76);
         }
 
-        public void PlayerTurn()
+        public void CommenceGame()
         {
-            int number = RollNumber();
-
-            for(int i = 0; i < 5; i++)
+            while(chipLimit > 0 && status == "playing")
             {
-                List<int> row = bingoCard.GetRow(i);
+                int number = RollNumber();
 
-                foreach(var r in row)
-                {
-                    if (r == number)
-                        row[r] = 0;
-                }
+                ChipNumber(number);
+
+                CheckForBingo();
+
+                chipLimit--;
             }
 
-            CheckForBingo();
-
-            chipLimit--;
-
-            if (chipLimit == 0 && status != "win")
+            if (status == "playing")
                 status = "lose";
         }
 
@@ -56,6 +50,16 @@ namespace Casino.Library.Games.Bingo
                 status = "win";
         }
 
-
+        public void ChipNumber(int number)
+        {
+            for (int r = 0; r < 5; r++)
+            {
+                for (int c = 0; c < 5; c++)
+                {
+                    if (bingoCard.card[r][c] == number)
+                        bingoCard.card[r][c] = 0;
+                }
+            }
+        }
     }
 }

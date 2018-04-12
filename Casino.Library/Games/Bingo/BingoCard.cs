@@ -6,7 +6,7 @@ namespace Casino.Library.Games.Bingo
 {
     public class BingoCard
     {
-        List<List<int>> card = new List<List<int>>();
+        public List<List<int>> card = new List<List<int>>();
         
         public BingoCard()
         {
@@ -55,19 +55,19 @@ namespace Casino.Library.Games.Bingo
 
         public bool CheckCollumn()
         {
-                for(int i = 0; i < 5; i++)
+                for(int c = 0; c < 5; c++)
                 {
-                    int r = 5;
-                    for(int j = 0; i < 5; i++)
+                    int i = 5;
+                    for(int r = 0; r < 5; r++)
                     {
-                        if (card[i][j] == 0)
+                        if (card[r][c] == 0)
                         {
-                            r--;
-                            if (r == 0)
-                                return true;
+                            i--;
                         }
                     }
-                }
+                if (i == 0)
+                    return true;
+            }
 
             return false;
         }
