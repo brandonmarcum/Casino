@@ -18,14 +18,13 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult BlackJack()
         {
-            TempData.Put("model", new BlackJackViewModel());
-            return View();
+            return View(new BlackJackViewModel());
         }
         [HttpPost]
         public IActionResult BlackJack(BlackJackViewModel model, string submitButton)
         {
             model = TempData.Get<BlackJackViewModel>("model");
-
+            
             if(submitButton.Equals("hit"))
             {
                 model.Blackjack.NextTurn();
@@ -39,7 +38,12 @@ namespace Casino.Client.Controllers
                 model.Blackjack.NextTurn();
                 ViewData["game"] = model.Blackjack.status;
             }
+            if(submitButton.Equals("play"))
+            {
+                model.Blackjack = new Blackjack();
+            }
             TempData.Put("model", model);
+
             return View(model);
         }
     }

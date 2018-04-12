@@ -38,15 +38,7 @@ namespace Casino.Library.Games
         {
             Random rand = new Random();
             int random = rand.Next(1, 11);
-            // if (random > 11)
-            //     random = 10;
-            // if (random == 1)
-            // {
-            //     if(playerTotal == 10)
-            //         return "win";
-            //     if (playerTotal < 10)
-            //         random = 1;
-            // }
+            
             playerStand = false; 
             playerTotal += random;
 
@@ -65,15 +57,6 @@ namespace Casino.Library.Games
         {
             Random rand = new Random();
             int random = rand.Next(1, 11);
-            // if (random > 10)
-            //     random = 10;
-            // if (random == 1)
-            // {
-            //     if (dealerTotal == 10)
-            //         return "lose";
-            //     if (dealerTotal < 10)
-            //         random = 1;
-            // }
 
 
             dealerTotal += random;
