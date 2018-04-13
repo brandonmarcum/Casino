@@ -1,0 +1,28 @@
+@font-face {
+    src: "https://fonts.googleapis.com/css?family=Cairo";
+    font-family: "Cairo";
+}
+
+html{
+    font-size: 16px;
+}
+
+body{
+    font-size: 16px;
+    font-size: 2em; /* 32 pixels */
+    font-family: Cairo, Helvetica, sans-serif;
+}
+
+header{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /*font-size: 2em; /* 64 em */
+    font-size: 2rem;
+}
+
+main{
+    
+}
+
+footer{
+   /* font-family: Roboto, sans-serif; */
+}
