@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casino</title>
+
+    <meta charset="UTF-8"> <!-- Makes the page Unicode compliant, Use UTF-16 if you want to use Japanese -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- What is the capability of your Screen?-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Use the latest IE you possibly can -->
+    <meta name="author" content="brandon marcum"> <!-- Who wrote the context of the page -->
+    <meta name="keywords" content="dotnet, html, css, js"> <!-- Manipulates SEO somewhat -->
+    <meta name="description" content="hello html">
+    
+    <link rel="stylesheet" href="C:/Users/Bmarc/source/repos/Casino2/Website/css/main.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        @import "https://fonts.googleapis.com/css?family=Viga";
+
+        body{
+            background-image: url("images/dark-2784188_640.png");
+            font-family: 'Viga', sans-serif;
+            text-transform: uppercase;
+        }
+
+        #about{
+            background-image: url(images/background-3079228_640.jpg);
+            margin-top: 2%;
+            margin-bottom: 2%;
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+            color: yellow;
+            background-size:100% 100%;
+        }
+
+        #title{margin-bottom: 1%; margin-top: 1%;}
+        #rps{background-image: url("images/rock-paper-scissors-156171_640.png"); }
+        #blackjack{background-image: url("images/cards-1437776_640.jpg");}
+        #bingo{ background-image: url("images/printing-3025962_640.jpg"); }
+        #fight{ background-image: url("images/chicken-3307569_640.jpg"); }
+        #slots{ background-image: url("images/casino-3260372_640.jpg"); }
+        #roulette{ background-image: url("images/gun-3294590_640.jpg"); }
+
+
+        td{
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            vertical-align: top;
+        }
+
+        article{
+            padding: 3%;
+            vertical-align: top;
+        }
+
+        footer{
+            background-image: url("images/district-699782_640.jpg");
+            color: white;
+            text-align: center;
+        }
+
+        a:link{
+            text-decoration-style: none;
+            color: yellow;
+        }
+
+        a:visited{
+            text-decoration-style: none;
+            color: yellow;
+        }
+        a:hover{
+            text-decoration-style: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/casino-1086410_1280.jpg" width=100% height="200px" class="col-md-12" id="title"/>
+    </header>
+
+    <main>
+        <header class="col-md-3"></header>
+        <header class="col-md-6" id="about">
+            <h2>About</h2>
+            <br />
+            <h5>
+                Casino is a mock website which is meant to simulate being at a real casino. Still, amatuer virtual 
+                casinos are frowned upon by todays society so I decided to make this casino a ridiculous as possible 
+                to the point where half of these games wouldn't even be remotely found in Las Vegas. This is known 
+                as "Project 2" for Revature's training where two people have to create something that uses: a 
+                Model-View-Controller, DevOps, Angular, and WebAPI. 
+            </h5>
+            <br>
+            <h5>
+                This website is in no way supposed to be taken seriously as a real casino, however it 
+                is meant to be taken seriously as a website. If you are in any way, shape, or form offended by any 
+                material I do ask you to please understand. If you have, by some miraculous chance, invested real money 
+                into this gambling website, I am very curious as to how you were able to do that and I will take notes 
+                on the matter. For personal reasons, of course.
+            </h5>
+            <br>
+        </header>
+        <header class="col-md-3"></header>
+    </main>
+
+    <aside></aside>
+
+    <footer class="col-md-12">
+      <br />
+      <br>
+      <nav>
+            <p><a href="Main.html"> Main </a>|<a href="Games.html"> Games </a>|<a href="About.html"> About </a>|<a href="Contact.html">Contact </a></p>
+        </nav>
+      <small>
+        Copyright &copy; 2018 Brandon Marcum and Jermaine Oliver, all rights reserved.
+      </small>
+      <br>
+      <br>
+    </footer>
+</body>
+</html>

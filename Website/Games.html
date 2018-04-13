@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casino</title>
+
+    <meta charset="UTF-8"> <!-- Makes the page Unicode compliant, Use UTF-16 if you want to use Japanese -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- What is the capability of your Screen?-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Use the latest IE you possibly can -->
+    <meta name="author" content="brandon marcum"> <!-- Who wrote the context of the page -->
+    <meta name="keywords" content="dotnet, html, css, js"> <!-- Manipulates SEO somewhat -->
+    <meta name="description" content="hello html">
+    
+    <link rel="stylesheet" href="C:/Users/Bmarc/source/repos/Casino2/Website/css/main.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        @import "https://fonts.googleapis.com/css?family=Viga";
+
+        body{
+            background-image: url("images/dark-2784188_640.png");
+            font-family: 'Viga', sans-serif;
+            text-transform: uppercase;
+        }
+
+        #games{
+            background-image: url(images/background-3079228_640.jpg);
+            margin-top: 2%;
+            margin-bottom: 2%;
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+            color: yellow;
+            background-size:100% 100%;
+        }
+
+        #title{margin-bottom: 1%; margin-top: 1%;}
+
+
+        td{
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            background-color: rgba(110, 5, 5, 0.7);
+            vertical-align: top;
+        }
+
+        article{
+            padding: 3%;
+            vertical-align: top;
+            margin: 2%;
+        }
+
+        footer{
+            background-image: url("images/district-699782_640.jpg");
+            color: white;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/casino-1086410_1280.jpg" width=100% height="200px" class="col-md-12" id="title"/>
+    </header>
+
+    <main>
+        <header class="col-md-12" id="games">
+            <h2>Games</h2>
+            <br />
+            <table>
+                <tr>
+                    <td>
+                            <article id="rps" class="col-md-12">
+                                    <h2>Rock-Paper-Scissors</h2>
+                                    <section>
+                                        <h3>Description</h3>
+                                        <p>
+                                            You pick a gesture: rock, paper, or scissors. The A.I. will also pick a gesture from the same set 
+                                            at the same time as you. Afterwards, the two gestures are compared. Rock beats scissors, paper 
+                                            beats rock (for some reason), and scissors beats paper. You win by having the winning gesture in 
+                                            comparison to the opponent.
+                                        </p>
+                                        <p>
+                                            Tip: Having the same gesture means it's a tie, however ties will only return you 3/4ths of your earnings back.
+                                        </p>
+                                    </section>
+                                    <section>
+                                        <h3>Winnings</h3>
+                                        <p>Condition (Win) - You will earn 2 times the number of chips betted prior to playing.</p>
+                                        <p>Condition (Tie) - You will lose 25% of the number of chips betted prior to playing.</p>
+                                        <p>Condition (Lose) - You will lose 90% of the number of chips betted prior to playing.</p>
+                                    </section>
+                                </article>
+                    </td>
+                    <td>
+                            <article id="blackjack" class="col-md-12">
+                                    <h2>Blackjack</h2>
+                                    <section>
+                                        <h3>Description</h3>
+                                        <p>
+                                            You and the dealer each draw a card. The goal is to get the total card value as close 
+                                            to 21 as possible without going over. If the value is over 21 the game is over and the 
+                                            person whom drew the last card loses. After each turn, you are given the option to stand 
+                                            which means you cannot draw cards anymore. If both you and the dealer stands without going 
+                                            over 21, the person with the greatest total value wins.
+                                        </p>
+                                        <p>
+                                            Tip: You can see the dealer's hand, make strategic moves accordingly.
+                                        </p>
+                                    </section>
+                                    <section>
+                                        <h3>Winnings</h3>
+                                        <p>Condition (Win) - You will earn 1.8 times the number of chips betted prior to playing.</p>
+                                        <p>Condition (Lose) - You will lose 80% of the number of chips betted prior to playing.</p>
+                                    </section>
+                            </article>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <article id="bingo" class="col-md-12">
+                                    <h2>Bingo</h2>
+                                    <section>
+                                        <h3>Description</h3>
+                                        <p>
+                                            The less turns you get, the greater the reward. You are given a randomly generated bingo 
+                                            card. For each turn, a number will be called out. If the number matches a number in the 
+                                            bingo card, it is chipped out. If a 5 chips line up horizontal, vertical, or diagonal, 
+                                            you win. However, if the number of turns is up and you still haven't gotten a bingo, 
+                                            you lose.
+                                        </p>
+                                        <p>
+                                            Tip: Time is money! Go for the more riskier turn limits so you don't waste your time earning 
+                                            chump change.
+                                        </p>
+                                    </section>
+                                    <section>
+                                        <h3>Winnings</h3>
+                                        <p>Condition (Win) - You will earn X times the number of chips betted prior to playing.</p>
+                                        <p>Condition (Lose) - You will lose 95% of the number of chips betted prior to playing.</p>
+                                    </section>
+                            </article>
+                    </td>
+                    <td>
+                            <article id="roulette" class="col-md-12">
+                                    <h2>Russian Roulette</h2>
+                                    <section>
+                                        <h3>Description</h3>
+                                        <p>
+                                            Enter the maximum bet you want to go for. First, the game starts with you betting 20% of the 
+                                            maximum bet, then increases for each round where no one loses. If the A.I.'s gun goes off first, 
+                                            you win. However, if your gun goes off first, you lose. You can choose to chicken our during the 
+                                            game, however you will lose 66% of the number of chips you betted during the game.
+                                        </p>
+                                        <p>
+                                            Tip: You will not die from playing this, at least I hope not. Do not try this in real life.
+                                        </p>
+                                    </section>
+                                    <section>
+                                        <h3>Winnings</h3>
+                                        <p>Condition (Win) - You will earn 2.75 times the number of chips betted during play.</p>
+                                        <p>Condition (Out) - You will lose 66% of the number of chips betted during play.</p>
+                                        <p>Condition (Lose) - You will lose ALL of the number of chips betted during play.</p>
+                                    </section>
+                            </article>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <article id="slots" class="col-md-12">
+                                    <h2>Slot Machines</h2>
+                                    <section>
+                                        <h3>Description</h3>
+                                        <p>
+                                            Click three buttons and if all three line up, you get more chips. The higher the number, 
+                                            the more chips you get in the end. However, the higher numbers are rarer and you are less 
+                                            likely to hit all three in a row.
+                                        </p>
+                                        <p>
+                                            Tip: Do not try to time this, the next value will be random.
+                                        </p>
+                                    </section>
+                                    <section>
+                                        <h3>Winnings</h3>
+                                        <p>Condition (Win) - You will earn X times the number of chips betted prior to playing.</p>
+                                        <p>Condition (Lose) - You will lose 35% of the number of chips betted prior to playing.</p>
+                                    </section>
+                            </article>
+                    </td>
+                    <td>
+                            <article id="fight" class="col-md-12">
+                                    <h2>Chicken Fight</h2>
+                                    <section>
+                                        <h3>Description</h3>
+                                        <p>
+                                            Bet on a chicken. They have hidden stats that can potentially defeat the other chicken 
+                                            with one peck, or became so fast that they cannot be touched. Either way, these chickens 
+                                            have it out for each other. The only information available to you is one stat from each 
+                                            of the chickens. Health is the amount of health they have before they are defeated. Attack 
+                                            is the amount of damage they dish out to the other chicken's health. Evasion is the odds the 
+                                            chicken will avoid the other chicken's attack.
+                                        </p>
+                                        <p>
+                                            Tip: Do not try pitting chickens against each other in real life, that is wrong as well as 
+                                            kind of illegal. I mean c'mon not even gladiators were allowed to outright kill each other.
+                                        </p>
+                                    </section>
+                                    <section>
+                                        <h3>Winnings</h3>
+                                        <p>Condition (Win) - You will earn 2 times the number of chips betted prior to playing.</p>
+                                        <p>Condition (Lose) - You will lose 90% of the number of chips betted prior to playing.</p>
+                                    </section>
+                            </article>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+        </header>
+    </main>
+
+    <footer class="col-md-12">
+      <br />
+      <br>
+      <nav>
+            <p><a href="Main.html"> Main </a>|<a href="Games.html"> Games </a>|<a href="About.html"> About </a>|<a href="Contact.html">Contact </a></p>
+        </nav>
+      <small>
+        Copyright &copy; 2018 Brandon Marcum and Jermaine Oliver, all rights reserved.
+      </small>
+      <br>
+      <br>
+    </footer>
+</body>
+</html>
