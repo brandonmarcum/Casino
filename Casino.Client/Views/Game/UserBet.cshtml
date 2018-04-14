@@ -1,0 +1,14 @@
+@using Casino.Library.Models;
+@model Casino.Client.Models.ChipHelperViewModel
+@{
+    <p>Bet Your Chips!</p>
+
+    <p>@Html.RadioButtonFor( m => m.Chips.Type, "white") White Chips</p>
+ 
+    <p>@Html.RadioButtonFor( m => m.Chips.Type, "black") Black Chips</p>
+  
+    <p>@Html.RadioButtonFor( m => m.Chips.Type, "green") Green Chips</p>
+
+    <input type="text" name="bet"/>
+    <button type="submit" name="submitButton" value="bet">Place Bet</button>
+}

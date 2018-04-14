@@ -6,7 +6,6 @@ namespace Casino.Library.Models
     {
         public Player()
         {
-
         }
         public List<CasinoGame> GameHistory{ get; set; }
         public int NumberOfWins{ get; set; }

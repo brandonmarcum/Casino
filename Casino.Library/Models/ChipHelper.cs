@@ -153,9 +153,23 @@ namespace Casino.Library.Models
 
             return convertedChips;
         }
-
-        public void betChips(Pocket pocket, Chips chips)
+        public void convertChips(int chipAmount)
         {
+            Chips OrangeChips = new Chips();
+            Chips PurpleChips = new Chips();
+            Chips BlackChips = new Chips();
+            Chips GreenChips = new Chips();
+            Chips BlueChips = new Chips();
+            Chips RedChips = new Chips();
+            Chips WhiteChips = new Chips();
+
+            
+        }
+
+        public void betChips(Pocket pocket, int bet)
+        {
+            Chips chips = new Chips();
+            
             foreach(var item in pocket.AllChips)
             {
                 if(item.Type.Equals(chips.Type))

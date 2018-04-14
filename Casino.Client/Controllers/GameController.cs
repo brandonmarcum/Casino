@@ -17,18 +17,41 @@ namespace Casino.Client.Controllers
             return View();
         }
         [HttpGet]
+        public IActionResult UserBet()
+        {
+            return View(new ChipHelperViewModel());
+        }
+        [HttpPost]
+        public IActionResult UserBet(ChipHelperViewModel chmodel)
+        {
+            ViewData["type"] = chmodel.Chips.Type;
+            return View();
+        }
+        [HttpGet]
         public IActionResult BlackJack()
         {
+            ViewData["game"] = "bet";
             return View(new BlackJackViewModel());
         }
         [HttpPost]
-        public IActionResult BlackJack(BlackJackViewModel model, string submitButton)
+        public IActionResult BlackJack(BlackJackViewModel model, ChipHelperViewModel chmodel, string submitButton, int bet)
         {
             User newUser = new User();
-            
+            ChipHelper ch = chmodel.ChipHelper;
 
+            ViewData["bet"] = bet;
+            //ViewData["type"] = chmodel.Chips.Type;
+            //ch.betChips(bet);
 
             model = TempData.Get<BlackJackViewModel>("model");
+
+            if(submitButton.Equals("bet"))
+            {
+                model.Blackjack = new Blackjack();
+                ViewData["game"] = model.Blackjack.status;
+                ViewData["score"] = model.Blackjack.playerTotal;
+                ViewData["dealer"] = model.Blackjack.dealerTotal;
+            }
             
             if(submitButton.Equals("hit"))
             {
@@ -47,8 +70,9 @@ namespace Casino.Client.Controllers
             }
             if(submitButton.Equals("play"))
             {
-                model.Blackjack = new Blackjack();
+                ViewData["game"] = "bet";
             }
+
             TempData.Put("model", model);
 
             return View(model);

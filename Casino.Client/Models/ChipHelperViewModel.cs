@@ -4,20 +4,16 @@ using Casino.Library.Models;
 
 namespace Casino.Client.Models
 {
-    public class BlackJackViewModel
+    public class ChipHelperViewModel
     {
         public string RequestId { get; set; }
-        public Blackjack Blackjack{ get; set; }
+        public ChipHelper ChipHelper{ get; set; }
         public Chips Chips { get; set; }
-        public int state{get; set;}
-        public string Type{ get; set; }
-        public BlackJackViewModel()
+        public ChipHelperViewModel()
         {
-            Blackjack = new Blackjack();
+            ChipHelper = new ChipHelper();
             Chips = new Chips();
             Chips.Type = "white";
-            Type = "not set";
-            state = 0;
         }
     }
 }
