@@ -5,92 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Casino</title>
 
-    <meta charset="UTF-8"> <!-- Makes the page Unicode compliant, Use UTF-16 if you want to use Japanese -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- What is the capability of your Screen?-->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Use the latest IE you possibly can -->
-    <meta name="author" content="brandon marcum"> <!-- Who wrote the context of the page -->
-    <meta name="keywords" content="dotnet, html, css, js"> <!-- Manipulates SEO somewhat -->
-    <meta name="description" content="hello html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="brandon marcum">
+    <meta name="description" content="Casino">
     
-    <link rel="stylesheet" href="C:/Users/Bmarc/source/repos/Casino2/Website/css/main.css" />
+    <link rel="icon" href="favicon.ico"/> 
+    <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <style>
-        @import "https://fonts.googleapis.com/css?family=Viga";
-
-        body{
-            background-image: url("images/dark-2784188_640.png");
-            font-family: 'Viga', sans-serif;
-            text-transform: uppercase;
-        }
-
-        #games{
-            background-image: url(images/background-3079228_640.jpg);
-            margin-top: 2%;
-            margin-bottom: 2%;
-            text-align: center;
-            margin-right: auto;
-            margin-left: auto;
-            color: yellow;
-            background-size:100% 100%;
-        }
-
-        #title{margin-bottom: 1%; margin-top: 1%;}
-        #rps{background-image: url("images/rock-paper-scissors-156171_640.png"); }
-        #blackjack{background-image: url("images/cards-1437776_640.jpg");}
-        #bingo{ background-image: url("images/printing-3025962_640.jpg"); }
-        #fight{ background-image: url("images/chicken-3307569_640.jpg"); }
-        #slots{ background-image: url("images/casino-3260372_640.jpg"); }
-        #roulette{ background-image: url("images/gun-3294590_640.jpg"); }
-
-
-        td{
-            background-repeat:no-repeat;
-            background-size:100% 100%;
-            vertical-align: top;
-        }
-
-        article{
-            padding: 3%;
-            vertical-align: top;
-        }
-
-        footer{
-            background-image: url("images/district-699782_640.jpg");
-            color: white;
-            text-align: center;
-        }
-
-        a:link{
-            text-decoration-style: none;
-            color: yellow;
-        }
-
-        a:visited{
-            text-decoration-style: none;
-            color: yellow;
-        }
-        a:hover{
-            text-decoration-style: none;
-        }
-        
-    </style>
 </head>
 <body>
     <header>
-        <img src="images/casino-1086410_1280.jpg" width=100% height="200px" class="col-md-12" id="title"/>
+        <img src="css/images/casino-1086410_1280.jpg" class="col-md-12 title"/>
     </header>
 
     <main>
-        <header class="col-md-12" id="games">
+        <header class="col-md-12 content">
             <h2>List of Available Games</h2>
             <table border="0">
                 <tr>
-                    <td class="col-md-4" id="rps">
+                    <td class="col-md-4" id="rpsM">
                         <a href="Games.html#rps">
                         <article href="">
                             <h1>Rock-Paper-Scissors</h1>
@@ -101,7 +40,7 @@
                         </article>
                         </a>
                     </td>
-                    <td class="col-md-4" id="blackjack">
+                    <td class="col-md-4" id="blackjackM">
                         <a href="Games.html#blackjack">
                         <article>
                             <h1>Blackjack</h1>
@@ -112,7 +51,7 @@
                         </article>
                         </a>
                     </td>
-                    <td class="col-md-4" id="bingo">
+                    <td class="col-md-4" id="bingoM">
                             <a href="Games.html#bingo">
                         <article>
                             <h1>Bingo</h1>
@@ -125,7 +64,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="col-md-4" id="roulette">
+                    <td class="col-md-4" id="rouletteM">
                             <a href="Games.html#roulette">
                             <article>
                         <h1>Russian Roulette</h1>
@@ -137,7 +76,7 @@
                         </article>
                         </a>
                     </td>
-                    <td class="col-md-4" id="slots">
+                    <td class="col-md-4" id="slotsM">
                             <a href="Games.html#slots">
                             <article>
                         <h1>Slots</h1>
@@ -147,7 +86,7 @@
                         </article>
                         </a>
                     </td>
-                    <td class="col-md-4" id="fight">
+                    <td class="col-md-4" id="fightM">
                             <a href="Games.html#fight">
                         <article>
                             <h1>Chicken Fight</h1>
