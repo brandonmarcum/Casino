@@ -6,6 +6,7 @@ namespace Casino.Library.Games.Bingo
 {
     public class Bingo
     {
+        public string GameName = "Bingo";
         public int chipLimit;
         public BingoCard bingoCard;
         public string status;

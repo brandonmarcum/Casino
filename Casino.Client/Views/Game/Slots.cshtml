@@ -1,0 +1,23 @@
+@model Casino.Client.Models.SlotsViewModel
+
+@using(@Html.BeginForm())
+{
+<p>Playing Slots!</p>
+<p>@ViewData["status"]</p>
+<p>Slot 1: @ViewData["left"]</p>
+<p>Slot 2: @ViewData["middle"]</p>
+<p>Slot 3: @ViewData["right"]</p>
+
+
+    if(Model.Slots.status.Equals("playing"))
+    {
+        <button type="submit" name="submitButton" value="run">Run!</button>
+        <button type="submit" name="submitButton" value="stop">Stop</button>
+    }
+    else
+    {
+        <button type="submit" name="submitButton" value="play">Play Again</button>
+    }
+
+}
+

@@ -10,10 +10,14 @@ namespace Casino.Library.Models
         }
         public int Amount { get; set; }
         public string Type { get; set; }
+
+        public ChipTypes ChipTypes{ get; }
         public int Value
         { 
             get
             {
+                
+                
                 switch (Type)
                 {
                     case (ChipTypes.White):   
