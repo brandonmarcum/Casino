@@ -1,0 +1,84 @@
+@import "https://fonts.googleapis.com/css?family=Viga";
+@import "https://afeld.github.io/emoji-css/emoji.css";
+
+body {
+    background-image: url("images/dark-2784188_640.png");
+    font-family: 'Viga', sans-serif;
+    text-transform: uppercase;
+}
+
+.content{
+            background-image: url("images/background-3079228_640.jpg");
+            margin-top: 2%;
+            margin-bottom: 2%;
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+            color: yellow;
+            background-size:100% 100%;
+}
+
+        .title{margin-bottom: 1%; width:100%; height:280px;}
+        #contentimg{margin-bottom: 1%; margin-top: 1%;}
+        #rpsM{background-image: url("images/rock-paper-scissors-156171_640.png"); }
+        #blackjackM{background-image: url("images/cards-1437776_640.jpg");}
+        #bingoM{ background-image: url("images/printing-3025962_640.jpg"); }
+        #fightM{ background-image: url("images/chicken-3307569_640.jpg"); }
+        #slotsM{ background-image: url("images/casino-3260372_640.jpg"); }
+        #rouletteM{ background-image: url("images/gun-3294590_640.jpg"); }
+        #rpsG{background-image: url("images/rps.png"); }
+        #blackjackG{background-image: url("images/blackjack.jpg");}
+        #bingoG{ background-image: url("images/bingo.jpg"); }
+        #fightG{ background-image: url("images/chickenfight.jpg"); }
+        #slotsG{ background-image: url("images/slots.jpg"); }
+        #rouletteG{ background-image: url("images/russianroulette.jpg"); }
+        #gameimage {width: 50%}
+
+#gamestable{
+            border-spacing: 2em;
+            border-collapse: separate;
+        }
+
+.gameimage{
+    width: 400px; height: 200px;
+}
+
+#gamestable{
+	margin: 2%
+}
+
+td{
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            background-color: rgba(110, 5, 5, 0.7);
+            vertical-align: top;
+        }
+
+ article{
+            padding: 3%;
+            vertical-align: top;
+        }
+
+footer{
+            background-image: url("images/district-699782_640.jpg");
+            color: white;
+            text-align: center;
+        }
+
+a:link, a:visited, a:hover{
+            text-decoration-style: none;
+            color: yellow;
+        }
+
+        #asiderps{
+            background-color: rgb(240,220,220);
+        }
+
+button{
+            background-color: tomato;
+            padding: 5%;
+            text-align: center;
+        }
+#UBSelect {
+    background-color: tomato;
+}

@@ -1,15 +1,18 @@
 @using Casino.Library.Models;
-@model Casino.Client.Models.BlackJackViewModel; 
+@model Casino.Client.Models.BlackJackViewModel;
 
-@using(@Html.BeginForm())
+@using (@Html.BeginForm())
 {
+
+
     <p>Playing Blackjack!</p>
-    if(ViewData["game"].Equals("bet"))
+    if (ViewData["game"].Equals("bet"))
     {
         @await Html.PartialAsync("UserBet.cshtml", @Model);
     }
     else
     {
+<<<<<<< HEAD
         <p>@ViewData["game"]</p>
         <p>Your Score: @ViewData["score"]</p>
         <p>Dealer Score: @ViewData["dealer"]</p>
@@ -18,13 +21,30 @@
         
             if(Model.Blackjack.status.Equals("playing"))
             {
+=======
+        <main>
+            <header class="col-md-3"></header>
+            <header class="col-md-6 content">
+                <p>@ViewData["game"]</p>
+                <p>Your Score: @ViewData["score"]</p>
+                <p>Dealer Score: @ViewData["dealer"]</p>
+                <p>Your Bet: @ViewData["bet"]</p>
+                <p>Chips: @ViewData["type"]</p>
+
+
+                @if (Model.Blackjack.status.Equals("playing"))
+                {
+>>>>>>> 8ebd2835dcd1bfcd1a53fd26588dad07a0188811
                 <button type="submit" name="submitButton" value="hit">Hit Me</button>
                 <button type="submit" name="submitButton" value="stand">Stand</button>
-            }
-            else
-            {
+                }
+                else
+                {
                 <button type="submit" name="submitButton" value="play">Play Again</button>
-            }
+                }
+            </header>
+            <header class="col-md-3"></header>
+        </main>
     }
 
 }

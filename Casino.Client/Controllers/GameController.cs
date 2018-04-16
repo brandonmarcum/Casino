@@ -16,6 +16,19 @@ namespace Casino.Client.Controllers
         {
             return View();
         }
+        public IActionResult Games(string anchor)
+        {
+            ViewBag.Section = anchor;
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult PlayGame()
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult UserBet(BlackJackViewModel model)
         {
