@@ -1,21 +1,23 @@
-@model Casino.Client.Models.BlackJackViewModel
 @using Casino.Library.Models;
+@model Casino.Client.Models.BlackJackViewModel; 
 
 @using(@Html.BeginForm())
 {
     <p>Playing Blackjack!</p>
     if(ViewData["game"].Equals("bet"))
     {
-        @await Html.PartialAsync("UserBet.cshtml");
+        @await Html.PartialAsync("UserBet.cshtml", @Model);
     }
     else
     {
+        
+
         <p>@ViewData["game"]</p>
         <p>Your Score: @ViewData["score"]</p>
         <p>Dealer Score: @ViewData["dealer"]</p>
         <p>Your Bet: @ViewData["bet"]</p>
         <p>Chips: @ViewData["type"]</p>
-        <p>@Model.Type</p>
+        
 
             if(Model.Blackjack.status.Equals("playing"))
             {

@@ -9,7 +9,7 @@ namespace Casino.Client.Models
         public string RequestId { get; set; }
         public Blackjack Blackjack{ get; set; }
         public Chips Chips { get; set; }
-        public int state{get; set;}
+        public int Bet{get; set;}
         public string Type{ get; set; }
         public BlackJackViewModel()
         {
@@ -17,7 +17,7 @@ namespace Casino.Client.Models
             Chips = new Chips();
             Chips.Type = "white";
             Type = "not set";
-            state = 0;
+            Bet = 1;
         }
     }
 }

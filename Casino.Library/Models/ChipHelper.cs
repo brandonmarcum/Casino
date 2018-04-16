@@ -82,21 +82,48 @@ namespace Casino.Library.Models
 
         public void AddToPocket(Pocket pocket, Chips chips, int amount)
         {
-            chips.Amount = amount;
-            pocket.AllChips.Add(chips);
+            //chips.Amount = amount;
+            //pocket.AllChips.Add(chips);
+
+            foreach(var item in pocket.AllChips)
+            {
+               
+                if(item.Type.Equals(chips.Type))
+                {
+                    if(amount>0)
+                    {
+                        item.Amount += amount/item.Value;
+                        amount -= item.Value*(amount/item.Value);
+                        //System.Console.WriteLine("Remove From Pocket: " + item.Amount + " amount left to remove " + amount);
+                    }
+                }
+            }
         }
         public void RemoveFromPocket(Pocket pocket, Chips chips, int amount)
         {
-            pocket.AllChips.Remove(chips);
-            if((chips.Amount - amount) > 0)
+            //pocket.AllChips.Remove(chips);
+            // if((chips.Amount - amount) > 0)
+            // {
+            //     chips.Amount = chips.Amount - amount;
+            // }
+            // else 
+            // {
+            //     chips.Amount = 0;
+            // }
+            // pocket.AllChips.Add(chips);
+            foreach(var item in pocket.AllChips)
             {
-                chips.Amount = chips.Amount - amount;
+                if(item.Type.Equals(chips.Type))
+                {
+                    if(amount>0)
+                    {
+                        item.Amount -= amount/item.Value;
+                        amount -= item.Value*(amount/item.Value);
+                        //System.Console.WriteLine("Remove From Pocket: " + item.Amount + " amount left to remove " + amount);
+                    }
+                }
             }
-            else 
-            {
-                chips.Amount = 0;
-            }
-            pocket.AllChips.Add(chips);
+
         }
 
         public double chipsToCash(Chips chips)
@@ -168,23 +195,9 @@ namespace Casino.Library.Models
 
         public void betChips(Pocket pocket, int bet)
         {
-            Chips chips = new Chips();
-            
-            foreach(var item in pocket.AllChips)
-            {
-                if(item.Type.Equals(chips.Type))
-                {
-                    if(item.Amount - chips.Amount > 0)
-                    {
-                        item.Amount -= chips.Amount;
-                    }
-                    else
-                    {
-                        throw new Exception("Not Enough Chips In Pocket For Bet.");
-                    }
-                }
-            }
         }
+    
+        
         
     }
 }
