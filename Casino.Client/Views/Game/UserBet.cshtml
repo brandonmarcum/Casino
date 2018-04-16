@@ -1,5 +1,5 @@
 @using Casino.Library.Models;
-@Model Casino.Client.Models.BlackJackViewModel;
+@model Casino.Client.Models.BlackJackViewModel;
 @{
     <p>Bet Your Chips!</p>
 
@@ -9,7 +9,10 @@
     
     foreach(var item in ViewData["userChips"] as List<Chips>)
     {
-    <p>@item.Type @item.Amount</p>
+        if(item.Amount>0)
+        {
+            <p>@item.Type @item.Amount</p>
+        }
     }
     
 

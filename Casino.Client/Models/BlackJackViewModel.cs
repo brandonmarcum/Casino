@@ -19,11 +19,8 @@ namespace Casino.Client.Models
             Blackjack = new Blackjack();
             Chips = new Chips();
 
-            //Users = UserHelper.GetUsers().GetAwaiter().GetResult();
-            // foreach(var item in Users[1].UserPocket.AllChips)
-            // {
-            //     System.Console.WriteLine(item.Type + " " + item.Amount);
-            // }
+            Users = UserHelper.GetUsers().GetAwaiter().GetResult();
+             
 
             Chips.Type = "white";
             Type = "not set";

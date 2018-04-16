@@ -31,9 +31,9 @@ namespace Casino.Client.Controllers
         public IActionResult BlackJack()
         {
             BlackJackViewModel model = new BlackJackViewModel();
-           // User newUser = model.Users[1];
-           User newUser = new User();
-            newUser.UserPocket.AllChips[2].Amount = 50;
+            User newUser = model.Users[1];
+            //User newUser = new User();
+            //newUser.UserPocket.AllChips[2].Amount = 50;
 
             //newUser.UserPocket.AllChips[2].Amount = 50;
 
