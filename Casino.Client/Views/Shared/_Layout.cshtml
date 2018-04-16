@@ -6,20 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="brandon marcum">
     <meta name="description" content="Casino">
-    <environment include="Development">
+    <link rel="icon" href="favicon.ico" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="icon" href="favicon.ico" />
-        <link rel="stylesheet" href="css/main.css" />
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="icon" href="images/favicon.ico" />
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+        <link href="~/css/main.css" rel="stylesheet" />
+    
     <title>Casino</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,7 +19,7 @@
 </head>
 <body>
     <header>
-        <img src="images/casino-1086410_1280.jpg" class="col-md-12 title" />
+        <img src="~/images/casino-1086410_1280.jpg" class="col-md-12 title" />
     </header>
     <div class="container body-content">
         @RenderBody()
@@ -37,7 +29,9 @@
         <br />
         <br>
         <nav>
-            <p><a href="Main.html"> Main </a>|<a href="Games.html"> Games </a>|<a href="About.html"> About </a></p>
+            <p><a asp-area="" asp-controller="Game" asp-action="Index">Main </a>|
+               <a asp-area="" asp-controller="Game" asp-action="Games"> Games </a>|
+               <a asp-area="" asp-controller="Game" asp-action="About"> About</a></p>
         </nav>
         <small>
             Copyright &copy; 2018 Brandon Marcum and Jermaine Oliver, all rights reserved.
