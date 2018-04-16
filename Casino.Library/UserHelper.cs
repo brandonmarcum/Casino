@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Casino.Library.Models;
 using Newtonsoft.Json;
 
-namespace DotnetBlog.Library
+namespace Casino.Library
 {
     public class UserHelper
     {
@@ -18,7 +18,7 @@ namespace DotnetBlog.Library
 		{
 			var client = new HttpClient();
 
-			var result = await client.GetAsync("http://localhost:5000/api/article");
+			var result = await client.GetAsync("http://localhost:5000/api/user");
 
 			if(result.IsSuccessStatusCode)
 			{

@@ -6,12 +6,10 @@
     <p>Playing Blackjack!</p>
     if(ViewData["game"].Equals("bet"))
     {
-        @await Html.PartialAsync("UserBet.cshtml", @Model);
+        @await Html.PartialAsync("UserBet.cshtml");
     }
     else
     {
-        
-
         <p>@ViewData["game"]</p>
         <p>Your Score: @ViewData["score"]</p>
         <p>Dealer Score: @ViewData["dealer"]</p>

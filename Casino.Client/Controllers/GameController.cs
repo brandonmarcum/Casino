@@ -30,22 +30,29 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult BlackJack()
         {
-            User newUser = new User();
+            BlackJackViewModel model = new BlackJackViewModel();
+           // User newUser = model.Users[1];
+           User newUser = new User();
             newUser.UserPocket.AllChips[2].Amount = 50;
+
+            //newUser.UserPocket.AllChips[2].Amount = 50;
+
+            newUser.UserPocket.AllChips.Add(new Chips(){Type = "Orange", Amount = 25});
+
+            ViewData["userChips"] = null;
 
             ViewData["userChips"] = newUser.UserPocket.AllChips;
             ViewData["game"] = "bet";
 
-            BlackJackViewModel model = TempData.Get<BlackJackViewModel>("model");
-            return View(new BlackJackViewModel());
+            BlackJackViewModel throwModel = TempData.Get<BlackJackViewModel>("model");
+            return View(model);
         }
         [HttpPost]
         public IActionResult BlackJack(BlackJackViewModel model, string type, string submitButton, int bet)
         {
 
             //bring user from session
-            User newUser = new User();            
-            newUser.UserPocket.AllChips[2].Amount = 50;
+            User newUser = model.Users[1];
             ChipHelper ch = new ChipHelper();
 
             ViewData["userChips"] = newUser.UserPocket.AllChips;
