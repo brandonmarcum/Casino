@@ -6,18 +6,23 @@
     <header class="col-md-10 content">
         <p>Bet Your Chips!</p>
 
-        <p>@Html.RadioButton("type", "white") White Chips</p>
-        <p>@Html.RadioButton("type", "black") Black Chips</p>
-        <p>@Html.RadioButton("type", "green") Green Chips</p>
+        <section class="col-md-12">
+            <article class="col-md-3"><h3>Available:</h3><br /><h3>Bet:</h3></article>
+            @foreach (var item in ViewData["userChips"] as List<Chips>)
+    {
+            <article class="col-md-1">
+                <p>@item.Type</p>
+                <p> @item.Amount</p>
+                <br />
+                <br />
+                <input maxlength="3" size="3" style="color:black">
+            </article>
+}
 
-        @foreach(var item in ViewData["userChips"] as List<Chips>)
-            {
-            <p>@item.Type @item.Amount</p>
-            }
+        </section>
 
 
-            <input type="text" name="bet" />
-            <button type="submit" name="submitButton" value="bet">Place Bet</button>
+        <button type="submit" name="submitButton" value="bet">Place Bet</button>
     </header>
     <aside class="col-md-1"></aside>
 </main>
