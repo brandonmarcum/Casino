@@ -48,9 +48,7 @@ namespace Casino.Client.Controllers
             newUser.UserPocket.AllChips[2].Amount = 50;
             ChipHelper ch = new ChipHelper();
 
-
             ViewData["userChips"] = newUser.UserPocket.AllChips;
-
 
             //ViewData["type"] = chmodel.Chips.Type;
             //ch.betChips(bet);
