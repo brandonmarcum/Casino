@@ -15,7 +15,7 @@
     <aside class="col-md-1"></aside>
     <header class="col-md-10 content">
         <h2>Blackjack</h2>
-        <img src="css/images/blackjack.jpg" id="gameimage">
+        <img src="~/images/blackjack.jpg" id="gameimage">
         <br>
         <br>
         <section>
@@ -40,8 +40,12 @@
         <h3>Your Bet: $0.00</h3>
         <h3>Maximum Winnings: $0.00</h3>
         <h3>Result of Losing: $0.00</h3>
-        <button>Bet</button>
-        <button>Play Now</button>
+        <a asp-area="" asp-controller="Game" asp-action="UserBet">
+            <h2>Bet</h2>
+        </a>
+        <a asp-area="" asp-controller="Game" asp-action="Blackjack">
+            <h2>Play Now</h2>
+        </a>
     </header>
     <aside class="col-md-1"></aside>
 </main>

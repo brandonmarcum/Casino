@@ -1,18 +1,29 @@
 @using Casino.Library.Models;
 @model Casino.Client.Models.BlackJackViewModel;
 @{
-    <p>Bet Your Chips!</p>
+    <main>
+    <aside class="col-md-1"></aside>
+    <header class="col-md-10 content">
+        <p>Bet Your Chips!</p>
 
-    <p>@Html.RadioButton( "type", "white") White Chips</p>
-    <p>@Html.RadioButton( "type", "black") Black Chips</p>
-    <p>@Html.RadioButton( "type", "green") Green Chips</p>
-    
-    foreach(var item in ViewData["userChips"] as List<Chips>)
-    {
-    <p>@item.Type @item.Amount</p>
-    }
-    
+        <p>@Html.RadioButton("type", "white") White Chips</p>
+        <p>@Html.RadioButton("type", "black") Black Chips</p>
+        <p>@Html.RadioButton("type", "green") Green Chips</p>
 
-    <input type="text" name="bet"/>
-    <button type="submit" name="submitButton" value="bet">Place Bet</button>
+        @foreach(var item in ViewData["userChips"] as List<Chips>)
+            {
+            <p>@item.Type @item.Amount</p>
+            }
+
+
+            <input type="text" name="bet" />
+            <button type="submit" name="submitButton" value="bet">Place Bet</button>
+    </header>
+    <aside class="col-md-1"></aside>
+</main>
+
+
+
+
+    
 }
