@@ -6,7 +6,7 @@
     <p>Playing Blackjack!</p>
     if(ViewData["game"].Equals("bet"))
     {
-        @await Html.PartialAsync("UserBet.cshtml");
+        @await Html.PartialAsync("UserBet.cshtml", @Model);
     }
     else
     {
