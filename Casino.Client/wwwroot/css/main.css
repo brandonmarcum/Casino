@@ -31,6 +31,7 @@ body {
         #fightG{ background-image: url("images/chickenfight.jpg"); }
         #slotsG{ background-image: url("images/slots.jpg"); }
         #rouletteG{ background-image: url("images/russianroulette.jpg"); }
+        #gameimage {width: 50%}
 
 #gamestable{
             border-spacing: 2em;

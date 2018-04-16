@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "PlayGame";
+}
+
+<!--
+    Content for Database:
+    Name of the Game
+    Description
+    Tip
+    Win Multiplier
+    Loser Multiplier
+-->
+<main>
+    <aside class="col-md-1"></aside>
+    <header class="col-md-10 content">
+        <h2>Blackjack</h2>
+        <img src="css/images/blackjack.jpg" id="gameimage">
+        <br>
+        <br>
+        <section>
+            <h3>Description</h3>
+            <p>
+                You and the dealer each draw a card. The goal is to get the total card value as close
+                to 21 as possible without going over. If the value is over 21 the game is over and the
+                person whom drew the last card loses. After each turn, you are given the option to stand
+                which means you cannot draw cards anymore. If both you and the dealer stands without going
+                over 21, the person with the greatest total value wins.
+            </p>
+            <p>
+                Tip: You can see the dealer's hand, make strategic moves accordingly.
+            </p>
+        </section>
+        <section>
+            <h3>Winnings</h3>
+            <p>Condition (Win) - You will earn 1.8 times the number of chips betted prior to playing.</p>
+            <p>Condition (Lose) - You will lose 80% of the number of chips betted prior to playing.</p>
+        </section>
+        <hr>
+        <h3>Your Bet: $0.00</h3>
+        <h3>Maximum Winnings: $0.00</h3>
+        <h3>Result of Losing: $0.00</h3>
+        <button>Bet</button>
+        <button>Play Now</button>
+    </header>
+    <aside class="col-md-1"></aside>
+</main>
+
