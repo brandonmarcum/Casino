@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Casino.Client.Models;
 using Casino.Library.Games;
 using Casino.Library.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Casino.Client.Controllers
 {
@@ -45,14 +46,6 @@ namespace Casino.Client.Controllers
         {
             BlackJackViewModel model = new BlackJackViewModel();
             User newUser = model.Users[1];
-            //User newUser = new User();
-            //newUser.UserPocket.AllChips[2].Amount = 50;
-
-            //newUser.UserPocket.AllChips[2].Amount = 50;
-
-            newUser.UserPocket.AllChips.Add(new Chips(){Type = "Orange", Amount = 25});
-
-            ViewData["userChips"] = null;
 
             ViewData["userChips"] = newUser.UserPocket.AllChips;
             ViewData["game"] = "bet";
@@ -61,7 +54,7 @@ namespace Casino.Client.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult BlackJack(BlackJackViewModel model, string type, string submitButton, int bet)
+        public IActionResult BlackJack(BlackJackViewModel model, FormCollection collection, string type, string submitButton, int bet)
         {
 
             //bring user from session
@@ -72,6 +65,15 @@ namespace Casino.Client.Controllers
 
             //ViewData["type"] = chmodel.Chips.Type;
             //ch.betChips(bet);
+
+            Pocket gamePocket = new Pocket();
+            
+
+            foreach(var item in (new Pocket()).AllChips)
+            {
+                gamePocket.AllChips.Add(new Chips(){ Amount = Int32.Parse(collection[item.Type]), Type = item.Type });
+            }
+            //NEXT STEP: MAKE A METHOD THAT REMOVES GAMEPOCKET CHIPS FROM USER POCKET.
 
             try
             {
@@ -141,6 +143,8 @@ namespace Casino.Client.Controllers
             {
                 model = new SlotsViewModel();
             }
+
+            //ViewData["userChips"] = newUser.UserPocket.AllChips;
 
             ViewData["left"] = model.Slots.left;
             ViewData["middle"] = model.Slots.middle;

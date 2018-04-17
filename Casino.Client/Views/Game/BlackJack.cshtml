@@ -1,7 +1,7 @@
 @using Casino.Library.Models;
 @model Casino.Client.Models.BlackJackViewModel;
 
-@using (@Html.BeginForm())
+@using (@Html.BeginForm(), FormMethod.Post)
 {
     <p>Playing Blackjack!</p>
     if (ViewData["game"].Equals("bet"))
@@ -20,7 +20,7 @@
                 <p>Chips: @ViewData["type"]</p>
 
 
-                if (Model.Blackjack.status.Equals("playing"))
+                @if (Model.Blackjack.status.Equals("playing"))
                 {
                 <button type="submit" name="submitButton" value="hit">Hit Me</button>
                 <button type="submit" name="submitButton" value="stand">Stand</button>
