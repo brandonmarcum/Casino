@@ -160,7 +160,7 @@ namespace Casino.Client.Controllers
             return View(new RPSViewModel());
         }
         [HttpPost]
-        public IActionResult RockPaperScissors(RPSViewModel model, string type, string submitButton, int bet)
+        public IActionResult RockPaperScissors(RPSViewModel model, string submitButton)
         {
             if(submitButton == "rock" || submitButton == "paper" || submitButton == "scissors")
             {
@@ -183,7 +183,42 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult RussianRoulette()
         {
-            return View(new RPSViewModel());
+            return View(new RRViewModel());
+        }
+        [HttpPost]
+        public IActionResult RussianRoulette(RRViewModel model, string submitButton)
+        {
+            if (submitButton == "fire")
+            {
+                model.rr.NextTurn();
+                
+
+                ViewData["game"] = model.rr.status;
+                if(model.rr.PlayerGun[model.rr.turn - 1])
+                    ViewData["you"] = "BANG!";
+                else
+                    ViewData["you"] = "*click*";
+
+                if (model.rr.OpponentGun[model.rr.turn - 1])
+                    ViewData["they"] = "BANG!";
+                else
+                    ViewData["they"] = "*click*";
+
+                ViewData["turn"] = model.rr.turn.ToString();
+            }
+            if (submitButton == "leave")
+            {
+                model.rr.PlayerLeave();
+            }
+            if (submitButton.Equals("play"))
+            {
+                return View(new RRViewModel());
+                //ViewData["game"] = "bet";
+            }
+
+            TempData.Put("model", model);
+
+            return View(model);
         }
     }
 }

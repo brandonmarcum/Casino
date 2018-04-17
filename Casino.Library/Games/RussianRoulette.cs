@@ -60,5 +60,10 @@ namespace Casino.Library.Games
             return "playing";
         }
 
+        public void PlayerLeave()
+        {
+                status = "leave";
+        }
+
     }
 }
