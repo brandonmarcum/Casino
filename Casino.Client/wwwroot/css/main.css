@@ -7,15 +7,17 @@ body {
     text-transform: uppercase;
 }
 
-.content{
-            background-image: url("images/background-3079228_640.jpg");
-            margin-top: 2%;
-            margin-bottom: 2%;
-            text-align: center;
-            margin-right: auto;
-            margin-left: auto;
-            color: yellow;
-            background-size:100% 100%;
+.content {
+    background-image: url("images/background-3079228_640.jpg");
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    color: yellow;
+    background-size: 100% 100%;
+    border-radius: 60px;
+    padding: 1%;
 }
 
         .title{margin-bottom: 1%; width:100%; height:280px;}
@@ -30,7 +32,7 @@ body {
         #blackjackG{background-image: url("images/blackjack.jpg");}
         #bingoG{ background-image: url("images/bingo.jpg"); }
         #fightG{ background-image: url("images/chickenfight.jpg"); }
-        #slotsG{ background-image: url("images/slots.jpg"); }
+        #slotsG{ background-image: url("images/slots.jpg");}
         #rouletteG{ background-image: url("images/russianroulette.jpg"); }
         #gameimage {width: 50%}
 
@@ -47,12 +49,13 @@ body {
 	margin: 2%;
 }
 
-td{
-            background-repeat:no-repeat;
-            background-size:100% 100%;
-            background-color: rgba(110, 5, 5, 0.7);
-            vertical-align: top;
-        }
+td {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: rgba(110, 5, 5, 0.7);
+    vertical-align: top;
+    border-radius: 60px;
+}
 
  article{
             padding: 3%;
@@ -74,11 +77,8 @@ a:link, a:visited, a:hover{
             background-color: rgb(240,220,220);
         }
 
-button{
-            background-color: tomato;
-            padding: 5%;
-            text-align: center;
-        }
 #UBSelect {
     background-color: tomato;
 }
+
+
