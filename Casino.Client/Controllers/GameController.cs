@@ -153,5 +153,37 @@ namespace Casino.Client.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult RockPaperScissors()
+        {
+            return View(new RPSViewModel());
+        }
+        [HttpPost]
+        public IActionResult RockPaperScissors(RPSViewModel model, string type, string submitButton, int bet)
+        {
+            if(submitButton == "rock" || submitButton == "paper" || submitButton == "scissors")
+            {
+                model.rps.MakeChoice(submitButton);
+
+                ViewData["game"] = model.rps.status;
+                ViewData["you"] = model.rps.playerChoice;
+                ViewData["they"] = model.rps.cpuChoice;
+            }
+            if (submitButton.Equals("play"))
+            {
+                return View(new RPSViewModel());
+                //ViewData["game"] = "bet";
+            }
+
+            TempData.Put("model", model);
+
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult RussianRoulette()
+        {
+            return View(new RPSViewModel());
+        }
     }
 }

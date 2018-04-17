@@ -81,4 +81,32 @@ a:link, a:visited, a:hover{
     background-color: tomato;
 }
 
+#index-content{
+    vertical-align: auto;
+}
+
+button {
+    background: #d1396e;
+    background-image: -webkit-linear-gradient(top, #d1396e, #afb82b);
+    background-image: -moz-linear-gradient(top, #d1396e, #afb82b);
+    background-image: -o-linear-gradient(top, #d1396e, #afb82b);
+    background-image: linear-gradient(to bottom, #d1396e, #afb82b);
+    border-radius: 60px;
+    font-family: Courier New;
+    color: #ffffff;
+    font-size: 27px;
+    padding: 1%;
+    margin: 3%;
+    text-decoration: none;
+}
+
+    button:hover {
+        background: #283842;
+        background-image: -webkit-linear-gradient(top, #283842, #acc1cf);
+        background-image: -moz-linear-gradient(top, #283842, #acc1cf);
+        background-image: -o-linear-gradient(top, #283842, #acc1cf);
+        background-image: linear-gradient(to bottom, #283842, #acc1cf);
+        text-decoration: none;
+    }
+
 
