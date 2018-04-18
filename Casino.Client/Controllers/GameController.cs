@@ -220,5 +220,31 @@ namespace Casino.Client.Controllers
 
             return View(model);
         }
+        [HttpGet]
+        public IActionResult ChickenFight()
+        {
+            return View(new CFViewModel());
+        }
+        [HttpPost]
+        public IActionResult ChickenFight(CFViewModel model, string submitButton)
+        {
+            if (submitButton == "chickenA")
+                model.fight.PlaceBetA();
+            if (submitButton == "chickenB")
+                model.fight.PlaceBetB();
+            if (submitButton == "chickenA" || submitButton == "chickenB")
+            {
+                model.fight.Engage();
+            }
+            if (submitButton.Equals("play"))
+            {
+                return View(new CFViewModel());
+                //ViewData["game"] = "bet";
+            }
+
+            TempData.Put("model", model);
+
+            return View(model);
+        }
     }
 }

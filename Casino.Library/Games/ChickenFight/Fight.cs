@@ -8,21 +8,25 @@ namespace Casino.Library.Games.ChickenFight
     {
         public Chicken chickenA;
         public Chicken chickenB;
+        public string status;
 
         public Fight()
         {
             chickenA = new Chicken();
             chickenB = new Chicken();
+            status = "choosing";
         }
 
         public void PlaceBetA()
         {
             chickenA.Betted = true;
+            status = "playing";
         }
 
         public void PlaceBetB()
         {
             chickenB.Betted = true;
+            status = "playing";
         }
 
         public string Engage()
@@ -48,23 +52,37 @@ namespace Casino.Library.Games.ChickenFight
         public string CheckWin()
         {
             if (chickenA.Betted && !chickenA.Standing)
-                return "lose";
+                status = "lose";
             else if (chickenB.Betted && !chickenB.Standing)
-                return "lose";
+                status = "lose";
             else
-                return "win";
+                status = "win";
+
+            return status;
         }
 
         public void ChickenATurn()
         {
             if (!chickenB.Evade() && chickenA.Standing)
                 chickenB.DecreaseHealth(chickenA.Attack);
+
+            if(chickenB.Health <= 0)
+            {
+                chickenB.Standing = false;
+                chickenB.Health = 0;
+            }
         }
 
         public void ChickenBTurn()
         {
             if (!chickenA.Evade() && chickenB.Standing)
                 chickenA.DecreaseHealth(chickenB.Attack);
+
+            if (chickenA.Health <= 0)
+            {
+                chickenA.Standing = false;
+                chickenA.Health = 0;
+            }
         }
     }
 }
