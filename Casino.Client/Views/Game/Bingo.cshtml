@@ -1,7 +1,44 @@
-﻿
-@{
-    ViewData["Title"] = "Bingo";
+﻿@model Casino.Client.Models.BingoViewModel;
+
+@using (@Html.BeginForm())
+{
+    <main>
+
+        @*if (ViewData["game"].Equals("bet"))
+            {
+                @await Html.PartialAsync("UserBet.cshtml", @Model);
+            }
+            else
+            {*@
+        <header class="col-md-3"></header>
+        <header class="col-md-6 content">
+            <p>@ViewData["game"]</p>
+
+            <table class="col-md-12 content">
+                    @for(int i = 0; i< 5; i++)
+                    {
+                        <tr>
+                            
+                        @for(int j = 0; j< 5; j++)
+                        {
+                            <td>@Model.bingo.bingoCard.card[i][j]</td>
+                        }
+                        </tr>
+                    }
+                </table>
+
+            @if (Model.bingo.status.Equals("playing"))
+            {
+                <button type="submit" name="submitButton" value="start">Start</button>
+            }
+            else
+            {
+                <button type="submit" name="submitButton" value="play">Play Again</button>
+            }
+        </header>
+        <header class="col-md-3"></header>
+        @*}*@
+
+    </main>
+
 }
-
-<h2>Bingo</h2>
-

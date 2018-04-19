@@ -246,5 +246,29 @@ namespace Casino.Client.Controllers
 
             return View(model);
         }
+        [HttpGet]
+        public IActionResult Bingo()
+        {
+            return View(new BingoViewModel());
+        }
+        [HttpPost]
+        public IActionResult Bingo(BingoViewModel model, string submitButton)
+        {
+            if (submitButton == "start")
+            {
+                model.bingo.CommenceGame();
+            }
+            if (submitButton.Equals("play"))
+            {
+                return View(new BingoViewModel());
+                //ViewData["game"] = "bet";
+            }
+
+            ViewData["game"] = model.bingo.status;
+
+            TempData.Put("model", model);
+
+            return View(model);
+        }
     }
 }

@@ -17,6 +17,12 @@ namespace Casino.Library.Games.Bingo
             bingoCard = new BingoCard();
             status = "playing";
         }
+        public Bingo()
+        {
+            chipLimit = 32;
+            bingoCard = new BingoCard();
+            status = "playing";
+        }
 
         public int RollNumber()
         {
