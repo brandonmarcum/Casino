@@ -15,21 +15,23 @@
             <p>@ViewData["game"]</p>
 
             <table class="col-md-12 content">
-                    @for(int i = 0; i< 5; i++)
-                    {
-                        <tr>
-                            
-                        @for(int j = 0; j< 5; j++)
+                @for (int i = 0; i < 5; i++)
+                {
+                    <tr>
+
+                        @for (int j = 0; j < 5; j++)
                         {
                             <td>@Model.bingo.bingoCard.card[i][j]</td>
                         }
-                        </tr>
-                    }
-                </table>
+                    </tr>
+                }
+            </table>
+
+            <p>Chips Left: @Model.bingo.chipLimit</p>
 
             @if (Model.bingo.status.Equals("playing"))
             {
-                <button type="submit" name="submitButton" value="start">Start</button>
+                <button type="submit" name="submitButton" value="start">Next</button>
             }
             else
             {

@@ -15,7 +15,7 @@ namespace Casino.Client.Models
 
         public BingoViewModel()
         {
-            bingo = new Bingo();
+            bingo = new Bingo(40);
         }
     }
 }

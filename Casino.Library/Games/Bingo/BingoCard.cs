@@ -24,15 +24,41 @@ namespace Casino.Library.Games.Bingo
         public List<int> FillRow()
         {
             List<int> row = new List<int>();
-            Random rand = new Random();
-
-            row.Add(rand.Next(1, 16));
-            row.Add(rand.Next(16, 31));
-            row.Add(rand.Next(31, 46));
-            row.Add(rand.Next(46, 61));
-            row.Add(rand.Next(61, 76));
+            
+            
+            row.Add(GetNonDupe(1, 16));
+            row.Add(GetNonDupe(16, 31));
+            row.Add(GetNonDupe(31, 46));
+            row.Add(GetNonDupe(46, 61));
+            row.Add(GetNonDupe(61, 76));
 
             return row;
+        }
+
+        public int GetNonDupe(int min, int max)
+        {
+            Random rand = new Random();
+            bool dupe;
+            int x;
+            do
+            {
+                dupe = false;
+                x = rand.Next(min, max);
+                for(int i = 0; i< card.Count; i++)
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        if(card[i][j] == x)
+                        {
+                            dupe = true;
+                        }
+                    }
+                }
+
+            } while (dupe);
+
+            return x;
+            
         }
 
 
