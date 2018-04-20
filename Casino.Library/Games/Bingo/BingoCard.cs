@@ -6,11 +6,12 @@ namespace Casino.Library.Games.Bingo
 {
     public class BingoCard
     {
-        public List<List<int>> card = new List<List<int>>();
+        public List<List<int>> card;
         
         public BingoCard()
         {
-            for(int i = 0; i < 5; i++)
+            card = new List<List<int>>();
+            for (int i = 0; i < 5; i++)
             {
                 card.Add(FillRow());
             }

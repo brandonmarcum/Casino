@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css?family=Viga";
 @import "https://afeld.github.io/emoji-css/emoji.css";
 
+
 body {
     background-image: url("images/dark-2784188_640.png");
     font-family: 'Viga', sans-serif;
@@ -20,7 +21,6 @@ body {
     padding: 1%;
 }
 
-        .title{margin-bottom: 1%; width:100%; height:280px;}
         #contentimg{margin-bottom: 1%; margin-top: 1%;}
         #rpsM{background-image: url("images/rock-paper-scissors-156171_640.png"); }
         #blackjackM{background-image: url("images/cards-1437776_640.jpg");}

@@ -43,7 +43,7 @@ namespace Casino.Library.Games.Bingo
 
         public void CommenceGame()
         {
-            while(chipLimit > 0 && status == "playing")
+            if(chipLimit > 0 && status == "playing")
             {
                 int number = RollNumber();
 
@@ -54,7 +54,7 @@ namespace Casino.Library.Games.Bingo
                 chipLimit--;
             }
 
-            if (status == "playing")
+            if (status == "playing" && chipLimit == 0)
                 status = "lose";
         }
 
