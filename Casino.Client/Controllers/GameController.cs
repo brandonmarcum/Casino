@@ -25,6 +25,10 @@ namespace Casino.Client.Controllers
         {
             return View();
         }
+        public IActionResult UserProfile()
+        {
+            return View(new UserProfileViewModel());
+        }
         public IActionResult PlayGame()
         {
             return View();
