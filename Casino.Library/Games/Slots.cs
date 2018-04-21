@@ -10,6 +10,7 @@ namespace Casino.Library.Games
         public int left { get; set; }
         public int middle { get; set; }
         public int right { get; set; }
+        public static int turn;
         public string status { get; set; }
 
         public Slots()

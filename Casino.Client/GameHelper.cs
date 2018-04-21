@@ -74,15 +74,15 @@ namespace Casino.Client
 		public static BlackJackViewModel GetBlackjackViewModel()
 		{
 			BlackJackViewModel model = new BlackJackViewModel();
-			model.Blackjack = GetBlackjackAsync().GetAwaiter().GetResult();
-			model.User = GetUserAsync().GetAwaiter().GetResult();
+			BlackJackViewModel.Blackjack = GetBlackjackAsync().GetAwaiter().GetResult();
+			BlackJackViewModel.User = GetUserAsync().GetAwaiter().GetResult();
 
 			return model;
 		}
 		public static void PostBlackjackViewModel(BlackJackViewModel model)
 		{
-			PostBlackJackAsync(model.Blackjack);
-			PostUserAsync(model.User);
+			PostBlackJackAsync(BlackJackViewModel.Blackjack);
+			PostUserAsync(BlackJackViewModel.User);
 
 		}
     }

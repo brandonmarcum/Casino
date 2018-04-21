@@ -16,18 +16,6 @@
                 <p>Slot 3: @ViewData["right"]</p>
 
 
-                <p id="example"></p>
-
-                <script>
-                    var x;
-                    function myTimer() {
-                        var x;
-                        x =  @SlotsViewModel.Slots.ChangeSlot();
-                        document.querySelector("#example").innerHTML = x;
-                    }
-                    var myVar = setInterval(myTimer, 1000);
-                </script>
-
                 @if (SlotsViewModel.Slots.status.Equals("playing"))
     {
             <button type="submit" name="submitButton" value="run">Run!</button>
