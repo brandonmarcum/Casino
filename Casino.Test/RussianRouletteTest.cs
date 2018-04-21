@@ -108,10 +108,13 @@ namespace Casino.Test
             for(int i = 0; i > 500; i++)
             {
                 RussianRoulette rr = new RussianRoulette();
+                int j = 0;
 
                 while (rr.status == "playing")
                 {
                     rr.NextTurn();
+                    j++;
+                    Assert.Equal(j, rr.turn);
                 }
 
                 Assert.True(rr.status == "win" || rr.status == "lose");

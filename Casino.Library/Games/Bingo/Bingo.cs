@@ -10,23 +10,40 @@ namespace Casino.Library.Games.Bingo
         public int chipLimit;
         public BingoCard bingoCard;
         public string status;
+        public List<int> usedNumbers;
 
         public Bingo(int chips)
         {
             chipLimit = chips;
             bingoCard = new BingoCard();
             status = "playing";
+            usedNumbers = new List<int>();
         }
 
         public int RollNumber()
         {
             Random rand = new Random();
-            return rand.Next(1, 76);
+            int number;
+            bool unique;
+
+            do
+            {
+                unique = true;
+                number = rand.Next(1, 76);
+                foreach (var item in usedNumbers)
+                {
+                    if (item == number)
+                        unique = false;
+                }
+
+            } while (!unique);
+
+            return number;
         }
 
         public void CommenceGame()
         {
-            while(chipLimit > 0 && status == "playing")
+            if(chipLimit > 0 && status == "playing")
             {
                 int number = RollNumber();
 
@@ -37,7 +54,7 @@ namespace Casino.Library.Games.Bingo
                 chipLimit--;
             }
 
-            if (status == "playing")
+            if (status == "playing" && chipLimit == 0)
                 status = "lose";
         }
 

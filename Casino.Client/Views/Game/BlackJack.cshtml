@@ -3,9 +3,16 @@
 
 @using (@Html.BeginForm())
 {
+<<<<<<< HEAD
     <p>Playing Blackjack!</p>
+=======
+
+
+    @*<p>Playing Blackjack!</p>*@
+>>>>>>> bb75cf12d79c8f3938c35e206a4595375a4797ea
     if (ViewData["game"].Equals("bet"))
     {
+
         @await Html.PartialAsync("UserBet.cshtml", @Model);
         <button type="submit" name="submitButton" value="bet">Place Bet</button>
     }
@@ -26,12 +33,12 @@
 
                 @if (Model.Blackjack.status.Equals("playing"))
                 {
-                <button type="submit" name="submitButton" value="hit">Hit Me</button>
-                <button type="submit" name="submitButton" value="stand">Stand</button>
+                    <button type="submit" name="submitButton" value="hit">Hit Me</button>
+                    <button type="submit" name="submitButton" value="stand">Stand</button>
                 }
                 else
                 {
-                <button type="submit" name="submitButton" value="play">Play Again</button>
+                    <button type="submit" name="submitButton" value="play">Play Again</button>
                 }
             </header>
             <header class="col-md-3"></header>

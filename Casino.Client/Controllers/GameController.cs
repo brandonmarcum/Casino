@@ -26,6 +26,10 @@ namespace Casino.Client.Controllers
         {
             return View();
         }
+        public IActionResult UserProfile()
+        {
+            return View(new UserProfileViewModel());
+        }
         public IActionResult PlayGame()
         {
             return View();
@@ -182,6 +186,123 @@ namespace Casino.Client.Controllers
             ViewData["status"] = model.Slots.status;
 
             TempData.Put("slots", model);
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult RockPaperScissors()
+        {
+            return View(new RPSViewModel());
+        }
+        [HttpPost]
+        public IActionResult RockPaperScissors(RPSViewModel model, string submitButton)
+        {
+            if(submitButton == "rock" || submitButton == "paper" || submitButton == "scissors")
+            {
+                model.rps.MakeChoice(submitButton);
+
+                ViewData["game"] = model.rps.status;
+                ViewData["you"] = model.rps.playerChoice;
+                ViewData["they"] = model.rps.cpuChoice;
+            }
+            if (submitButton.Equals("play"))
+            {
+                return View(new RPSViewModel());
+                //ViewData["game"] = "bet";
+            }
+
+            TempData.Put("model", model);
+
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult RussianRoulette()
+        {
+            return View(new RRViewModel());
+        }
+        [HttpPost]
+        public IActionResult RussianRoulette(RRViewModel model, string submitButton)
+        {
+            if (submitButton == "fire")
+            {
+                model.rr.NextTurn();
+                
+
+                ViewData["game"] = model.rr.status;
+                if(model.rr.PlayerGun[model.rr.turn - 1])
+                    ViewData["you"] = "BANG!";
+                else
+                    ViewData["you"] = "*click*";
+
+                if (model.rr.OpponentGun[model.rr.turn - 1])
+                    ViewData["they"] = "BANG!";
+                else
+                    ViewData["they"] = "*click*";
+
+                ViewData["turn"] = model.rr.turn.ToString();
+            }
+            if (submitButton == "leave")
+            {
+                model.rr.PlayerLeave();
+            }
+            if (submitButton.Equals("play"))
+            {
+                return View(new RRViewModel());
+                //ViewData["game"] = "bet";
+            }
+
+            TempData.Put("model", model);
+
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult ChickenFight()
+        {
+            return View(new CFViewModel());
+        }
+        [HttpPost]
+        public IActionResult ChickenFight(CFViewModel model, string submitButton)
+        {
+            if (submitButton == "chickenA")
+                model.fight.PlaceBetA();
+            if (submitButton == "chickenB")
+                model.fight.PlaceBetB();
+            if (submitButton == "chickenA" || submitButton == "chickenB")
+            {
+                model.fight.Engage();
+            }
+            if (submitButton.Equals("play"))
+            {
+                return View(new CFViewModel());
+                //ViewData["game"] = "bet";
+            }
+
+            TempData.Put("model", model);
+
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult Bingo()
+        {
+            return View(new BingoViewModel());
+        }
+        [HttpPost]
+        public IActionResult Bingo(BingoViewModel model, string submitButton)
+        {
+            if (submitButton == "start")
+            {
+                model.bingo.CommenceGame();
+            }
+            if (submitButton.Equals("play"))
+            {
+                return View(new BingoViewModel());
+                //ViewData["game"] = "bet";
+            }
+
+            ViewData["game"] = model.bingo.status;
+
+            TempData.Put("model", model);
 
             return View(model);
         }

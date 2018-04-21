@@ -18,5 +18,9 @@
     <ProjectReference Include="..\Casino.Library\Casino.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Angular\" />
+  </ItemGroup>
+
  
 </Project>

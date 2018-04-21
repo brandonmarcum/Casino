@@ -240,9 +240,14 @@ namespace Casino.Test
         [Fact]
         public void T14GoldenTest()
         {
-            Bingo bingo = new Bingo(20);
-            bingo.CommenceGame();
-            Assert.True(bingo.status == "win" || bingo.status == "lose");
+            for(int j = 0; j<500; j++)
+            {
+                Bingo bingo = new Bingo(20);
+                BingoCard bc = bingo.bingoCard;
+                bingo.CommenceGame();
+                Assert.True(bc.card == bingo.bingoCard.card);
+                Assert.True(bingo.status == "win" || bingo.status == "lose");
+            }
         }
     }
 }

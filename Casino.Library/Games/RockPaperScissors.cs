@@ -11,11 +11,16 @@ namespace Casino.Library.Games
         public string cpuChoice { get; set; }
         public string status { get; set; }
 
-        public RockPaperScissors(string choice)
+        public RockPaperScissors()
+        {
+            status = "playing";
+        }
+
+        public void MakeChoice(string choice)
         {
             playerChoice = choice;
             cpuChoice = GetCpuChoice();
-            
+
             status = GetResult();
         }
 
