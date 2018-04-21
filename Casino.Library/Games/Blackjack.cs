@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Casino.Library.Models;
 
 namespace Casino.Library.Games
 {
@@ -12,6 +13,7 @@ namespace Casino.Library.Games
         public bool playerStand;
         public bool dealerStand;
         public string status;
+        public Pocket GamePocket{ get; set; }
 
         public Blackjack()
         {
@@ -20,6 +22,8 @@ namespace Casino.Library.Games
             status = "playing";
             playerStand = false;
             dealerStand = false;
+            GamePocket = new Pocket();
+            GamePocket.AllChips = new List<Chips>();
         }
         
         public void NextTurn()

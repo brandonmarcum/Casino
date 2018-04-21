@@ -1,5 +1,5 @@
 @using Casino.Library.Models;
-@model Casino.Client.Models.BlackJackViewModel;
+@model Casino.Client.Models.BlackJackViewModel
 
 @using (@Html.BeginForm())
 {
@@ -10,18 +10,22 @@
     {
 
         @await Html.PartialAsync("UserBet.cshtml", @Model);
+        <button type="submit" name="submitButton" value="bet">Place Bet</button>
     }
     else
     {
         <main>
             <header class="col-md-3"></header>
             <header class="col-md-6 content">
-                <p>@ViewData["game"]</p>
-                <p>Your Score: @ViewData["score"]</p>
-                <p>Dealer Score: @ViewData["dealer"]</p>
-                <p>Your Bet: @ViewData["bet"]</p>
-                <p>Chips: @ViewData["type"]</p>
+                <p>@Model.Blackjack.status</p>
+                <p>Player Score: @Model.Blackjack.playerTotal</p>
+                <p>Dealer Score: @Model.Blackjack.dealerTotal</p>
+                <p>Your Bet: </p>
 
+                @foreach(var item in @Model.Bet.Keys)
+                {
+                    <p>@item.ToString() @Model.Bet[@item]</p> 
+                }
 
                 @if (BlackJackViewModel.Blackjack.status.Equals("playing"))
                 {
@@ -36,6 +40,5 @@
             <header class="col-md-3"></header>
         </main>
     }
-
 }
 
