@@ -7,7 +7,6 @@
 
         <section class="col-md-12">
             <article class="col-md-3"><h3>Available:</h3><br /><h3>Bet:</h3></article>
-<<<<<<< HEAD
                 @foreach (var item in @Model.User.UserPocket.AllChips as List<Chips>)
                 {
                     if(item.Amount > 0)
@@ -22,18 +21,6 @@
                     }
                 }
 
-=======
-            @foreach (var item in ViewData["userChips"] as List<Chips>)
-    {
-            <article class="col-md-1">
-                <p>@item.Type</p>
-                <p> @item.Amount</p>
-                <br />
-                <br />
-                <input maxlength="3" size="3" style="color:black">
-            </article>
-}
->>>>>>> bb75cf12d79c8f3938c35e206a4595375a4797ea
         </section>
 
 
