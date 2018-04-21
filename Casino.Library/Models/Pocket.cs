@@ -10,6 +10,7 @@ namespace Casino.Library.Models
         public List<Chips> AllChips{ get; set; }
         public double CashInPocket{ get; set; }
         public double CoinsInPocket{ get; set; }
+        public ChipHelper ChipHelper{ get; set; }
         public Pocket(){
             AllChips = new List<Chips>();
             AllChips.Add(new Chips(){Type = ChipTypes.Orange, Amount = 0});
@@ -23,11 +24,10 @@ namespace Casino.Library.Models
         public void cashOutPocket()
         {
             //convert all of the chips to money using chiphelper and add to user payment method
-            ChipHelper ch = new ChipHelper();
             double cashValue = 0;
             foreach(var item in AllChips)
             {
-                cashValue += ch.chipsToCash(item);
+                cashValue += ChipHelper.chipsToCash(item);
             }
             CashInPocket = cashValue;
         }
@@ -37,7 +37,7 @@ namespace Casino.Library.Models
             if(CashInPocket - money > 0)
             {
                 CashInPocket -= money;
-                AllChips = new ChipHelper().convertCashToChips(money);
+                AllChips = ChipHelper.convertCashToChips(money);
             }
             else
             {

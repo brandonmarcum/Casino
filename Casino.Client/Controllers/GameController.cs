@@ -45,84 +45,105 @@ namespace Casino.Client.Controllers
         public IActionResult BlackJack()
         {
             BlackJackViewModel model = new BlackJackViewModel();
-            User newUser = model.Users[1];
 
-            ViewData["userChips"] = newUser.UserPocket.AllChips;
+            //BlackJackViewModel model = GameHelper.GetBlackJackViewModel().GetAwaiter().GetResult();
+            //User newUser = model.Users[0];
+            //User newUser = new User();
+            //newUser.Name = "jermine";
+            //newUser.UserPocket.AllChips[0].Amount = 237;
+            model.User.UserPocket.AllChips[0].Amount = 237; 
+            model.User.UserPocket.AllChips[1].Amount = 314;
+            model.User.UserPocket.AllChips[2].Amount = 5798;
+            model.User.UserPocket.AllChips[3].Amount = 221;
+            model.RequestId = "5";
+            //model.User = newUser;
+
+
+            
+            //GameHelper.PostBlackjackViewModel(model);
+            //Console.WriteLine(model + " " + model.RequestId);
+
             ViewData["game"] = "bet";
 
-            BlackJackViewModel throwModel = TempData.Get<BlackJackViewModel>("model");
             return View(model);
         }
         [HttpPost]
-        public IActionResult BlackJack(BlackJackViewModel model, FormCollection collection, string type, string submitButton, int bet)
+        public IActionResult BlackJack(BlackJackViewModel model, IFormCollection collection, string submitButton)
         {
 
             //bring user from session
-            User newUser = model.Users[1];
+
+            model = new BlackJackViewModel();
+
             ChipHelper ch = new ChipHelper();
-
-            ViewData["userChips"] = newUser.UserPocket.AllChips;
-
-            //ViewData["type"] = chmodel.Chips.Type;
-            //ch.betChips(bet);
-
-            Pocket gamePocket = new Pocket();
             
-
             foreach(var item in (new Pocket()).AllChips)
             {
-                gamePocket.AllChips.Add(new Chips(){ Amount = Int32.Parse(collection[item.Type]), Type = item.Type });
-            }
-            //NEXT STEP: MAKE A METHOD THAT REMOVES GAMEPOCKET CHIPS FROM USER POCKET.
-
-            try
-            {
-            model = TempData.Get<BlackJackViewModel>("model");
-            string k = model.Blackjack.status;
-            }
-            catch
-            {
-                model = new BlackJackViewModel();
-                model.Bet = bet; 
-                model.Chips.Type = type;
+                int intThrow;
+				if (Int32.TryParse(collection[item.Type], out intThrow))
+				{
+					model.Blackjack.GamePocket.AllChips.Add(new Chips() { Amount = Int32.Parse(collection[item.Type]), Type = item.Type });
+				}
             }
 
+            ch.pocketSubtraction(model.User.UserPocket, model.Blackjack.GamePocket);
 
             if(submitButton.Equals("bet"))
             {
-                model.Blackjack = new Blackjack();
-                model.Bet = bet; 
-                model.Chips.Type = type;
+                foreach(var item in model.Blackjack.GamePocket.AllChips)
+                {
+                    if(item.Amount>0)
+                    {
+                        model.Bet.Add(item.Type, item.Amount); 
+                    }
+                }
+                model.User.UserPocket.AllChips[0].Amount = 237; 
+                model.User.UserPocket.AllChips[1].Amount = 314;
+                model.User.UserPocket.AllChips[2].Amount = 5798;
+                model.User.UserPocket.AllChips[3].Amount = 221;
             }
+            else{
+                model.Blackjack.playerTotal = HttpContext.Session.Get<int>("playerTotal");
+                model.Blackjack.dealerTotal = HttpContext.Session.Get<int>("dealerTotal");
+                model.Bet = HttpContext.Session.Get<IDictionary<string, int>>("bet"); 
+                
+                model.User.UserPocket.AllChips = HttpContext.Session.Get<List<Chips>>("chips");
+            }
+
+
             if(submitButton.Equals("hit"))
             {
                 model.Blackjack.NextTurn();
+
+                HttpContext.Session.Set<int>("playerTotal", model.Blackjack.playerTotal);
+                HttpContext.Session.Set<int>("dealerTotal", model.Blackjack.dealerTotal);
+
             }
             if(submitButton.Equals("stand"))
             {
                 model.Blackjack.PlayerStand();
                 model.Blackjack.NextTurn();
+
+                HttpContext.Session.Set<int>("playerTotal", model.Blackjack.playerTotal);
+                HttpContext.Session.Set<int>("dealerTotal", model.Blackjack.dealerTotal);
             }
             if(model.Blackjack.status.Equals("win"))
             {
-                ch.AddToPocket(newUser.UserPocket, model.Chips, 2*model.Bet*model.Chips.Value);
+                ch.pocketAddition(model.User.UserPocket, model.Blackjack.GamePocket);
+                ch.pocketAddition(model.User.UserPocket, model.Blackjack.GamePocket);
             }
 
-            ViewData["bet"] = model.Bet;
-            ViewData["type"] = model.Chips.Type;
             ViewData["game"] = model.Blackjack.status;
-            ViewData["score"] = model.Blackjack.playerTotal;
-            ViewData["dealer"] = model.Blackjack.dealerTotal;
+            HttpContext.Session.Set<IDictionary<string, int>>("bet", model.Bet);                
 
             if(submitButton.Equals("play"))
             {
-                ViewData["game"] = "bet";
+                model.Blackjack = new Blackjack();
+                HttpContext.Session.Set<int>("playerTotal", model.Blackjack.playerTotal);
+                HttpContext.Session.Set<int>("dealerTotal", model.Blackjack.dealerTotal);
             }
 
-            System.Console.WriteLine("Model.Chips.Value " + model.Chips.Value);
-            ch.RemoveFromPocket(newUser.UserPocket, model.Chips, model.Bet*model.Chips.Value);
-
-            TempData.Put("model", model);
+            HttpContext.Session.Set<List<Chips>>("chips", model.User.UserPocket.AllChips);
 
             return View(model);
         }

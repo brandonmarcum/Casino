@@ -196,7 +196,49 @@ namespace Casino.Library.Models
         public void betChips(Pocket pocket, int bet)
         {
         }
-    
+    public Pocket pocketSubtraction(Pocket firstPocket, Pocket secondPocket)
+        {
+            //firstpocket - secondpocket
+            PocketCheck(firstPocket);
+            PocketCheck(secondPocket);
+
+            foreach(var firstChips in firstPocket.AllChips)
+            {
+                foreach(var secondChips in secondPocket.AllChips)
+                {
+                    if(firstChips.Type.Equals(secondChips.Type))
+                    {
+                        firstChips.Amount -= secondChips.Amount;
+                    }
+                }
+            }
+            return firstPocket;
+        }
+        public Pocket pocketAddition(Pocket firstPocket, Pocket secondPocket)
+        {
+            //firstpocket - secondpocket
+            PocketCheck(firstPocket);
+            PocketCheck(secondPocket);
+
+            foreach(var firstChips in firstPocket.AllChips)
+            {
+                foreach(var secondChips in secondPocket.AllChips)
+                {
+                    if(firstChips.Type.Equals(secondChips.Type))
+                    {
+                        firstChips.Amount += secondChips.Amount;
+                    }
+                }
+            }
+            return firstPocket;
+        }
+        public void PocketCheck(Pocket pocket)
+        {
+            while(pocket.AllChips.Count>7)
+            {
+                pocket.AllChips.RemoveAt(0);
+            }
+        }
         
         
     }
