@@ -23,7 +23,7 @@
                 <p>Chips: @ViewData["type"]</p>
 
 
-                @if (Model.Blackjack.status.Equals("playing"))
+                @if (BlackJackViewModel.Blackjack.status.Equals("playing"))
                 {
                     <button type="submit" name="submitButton" value="hit">Hit Me</button>
                     <button type="submit" name="submitButton" value="stand">Stand</button>

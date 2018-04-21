@@ -1,7 +1,7 @@
 ﻿@model Casino.Client.Models.RPSViewModel;
 
-@*@using (@Html.BeginForm())
-{*@
+using @Html.BeginForm()
+{
     <main>
        
             @*if (ViewData["game"].Equals("bet"))
@@ -12,10 +12,10 @@
             {*@
                 <header class="col-md-3"></header>
                 <header class="col-md-6 content">
-                    <p>@ViewData["game"]</p>
-                    <p>Your Chosed: @ViewData["you"]</p>
-                    <p>They Chosed: @ViewData["they"]</p>
-                    @*@if (Model.rps.status.Equals("playing"))
+                    <p>@RPSViewModel.rps.status</p>
+                    <p>You Chosed: @RPSViewModel.rps.playerChoice</p>
+                    <p>They Chosed: @RPSViewModel.rps.cpuChoice</p>
+                    @if (RPSViewModel.rps.status.Equals("playing"))
                     {
                         <button type="submit" name="submitButton" value="rock">Rock</button>
                         <button type="submit" name="submitButton" value="paper">Paper</button>
@@ -24,21 +24,7 @@
                     else
                     {
                         <button type="submit" name="submitButton" value="play">Play Again</button>
-                    }*@
-                    <div ng-app="myApp" ng-controller="myCtrl">
-
-                    <button ng-click="count = count + 1">Click me!</button>
-
-                    <p>{{ count }}</p>
-
-                    </div>
-
-                     <script>
-                        var app = angular.module('myApp', []);
-                        app.controller('myCtrl', function($scope) {
-                            $scope.count = 0;
-                        });
-                    </script>
+                    }
                     
                 </header>
                 <header class="col-md-3"></header>
@@ -46,4 +32,4 @@
             
     </main>
 
-@*}*@
+}

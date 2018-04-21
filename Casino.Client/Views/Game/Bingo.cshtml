@@ -20,15 +20,15 @@
                     <tr>
                         @for (int j = 0; j < 5; j++)
                         {
-                            <td>@Model.bingo.bingoCard.card[i][j]</td>
+                            <td>@BingoViewModel.bingo.bingoCard.card[i][j]</td>
                         }
                     </tr>
                 }
             </table>
 
-            <p>Chips Left: @Model.bingo.chipLimit</p>
+            <p>Chips Left: @BingoViewModel.bingo.chipLimit</p>
 
-            @if (Model.bingo.status.Equals("playing"))
+            @if (BingoViewModel.bingo.status.Equals("playing"))
             {
                 <button type="submit" name="submitButton" value="start">Next</button>
             }

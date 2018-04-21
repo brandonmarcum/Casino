@@ -9,12 +9,11 @@ namespace Casino.Client.Models
     public class CFViewModel
     {
         public string RequestId { get; set; }
-        public Fight fight { get; set; }
+        public static Fight fight { get; set; }
         public string status { get; set; }
 
         public CFViewModel()
         {
-            fight = new Fight();
         }
     }
 }

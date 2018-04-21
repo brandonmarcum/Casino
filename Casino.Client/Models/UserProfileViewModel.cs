@@ -7,7 +7,7 @@ namespace Casino.Client.Models
 {
     public class UserProfileViewModel
     {
-        public string username;
+        public string Username;
         public int Wins;
         public int Losses;
         public double WinLose;
@@ -20,21 +20,21 @@ namespace Casino.Client.Models
         public int Orange;
         public int TotalChips;
         public string MostPlayed;
-        public UserProfileViewModel()
+        public UserProfileViewModel(string username, int wins, int losses, Dictionary<string, int> chips, string mostPlayed)
         {
-            username = "Brandon Marcum";
-            Wins = 8;
-             Losses = 3;
+            Username = username;
+            Wins = wins;
+             Losses = losses;
              WinLose = Wins / Losses;
-             White = 50;
-             Red = 50;
-             Blue = 50;
-             Green = 50;
-             Black = 50;
-             Purple = 50;
-             Orange = 50;
+             White = chips["White"];
+             Red = chips["Red"];
+             Blue = chips["Blue"];
+             Green = chips["Green"];
+             Black = chips["Black"];
+             Purple = chips["Purple"];
+             Orange = chips["Orange"];
              TotalChips = White + Red + Blue + Green + Black + Purple + Orange;
-             MostPlayed = "Russian Roulette";
+             MostPlayed = mostPlayed;
         }
     }
 }

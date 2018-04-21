@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Casino.Client.Models;
 using Casino.Library.Games;
 using Casino.Library.Models;
+using Casino.Library.Games.ChickenFight;
+using Casino.Library.Games.Bingo;
 
 namespace Casino.Client.Controllers
 {
@@ -27,7 +29,24 @@ namespace Casino.Client.Controllers
         }
         public IActionResult UserProfile()
         {
-            return View(new UserProfileViewModel());
+            Dictionary<string, int> chips = new Dictionary<string, int>();
+            chips["White"] = 50;
+            chips["Red"] = 50;
+            chips["Blue"] = 50;
+            chips["Green"] = 50;
+            chips["Black"] = 50;
+            chips["Purple"] = 50;
+            chips["Orange"] = 50;
+
+            return View(
+                new UserProfileViewModel(
+                    "Brandon Marcum",
+                    8,
+                    3,
+                    chips,
+                    "Russian Roulette"
+                )
+            );
         }
         public IActionResult PlayGame()
         {
@@ -53,7 +72,8 @@ namespace Casino.Client.Controllers
             ViewData["userChips"] = newUser.UserPocket.AllChips;
             ViewData["game"] = "bet";
 
-            BlackJackViewModel model = TempData.Get<BlackJackViewModel>("model");
+            Blackjack blackjack = new Blackjack();
+            BlackJackViewModel.Blackjack = blackjack;
             return View(new BlackJackViewModel());
         }
         [HttpPost]
@@ -73,7 +93,7 @@ namespace Casino.Client.Controllers
             try
             {
             model = TempData.Get<BlackJackViewModel>("model");
-            string k = model.Blackjack.status;
+            string k = BlackJackViewModel.Blackjack.status;
             }
             catch
             {
@@ -85,29 +105,29 @@ namespace Casino.Client.Controllers
 
             if(submitButton.Equals("bet"))
             {
-                model.Blackjack = new Blackjack();
+                BlackJackViewModel.Blackjack = new Blackjack();
                 model.Bet = bet; 
                 model.Chips.Type = type;
             }
             if(submitButton.Equals("hit"))
             {
-                model.Blackjack.NextTurn();
+                BlackJackViewModel.Blackjack.NextTurn();
             }
             if(submitButton.Equals("stand"))
             {
-                model.Blackjack.PlayerStand();
-                model.Blackjack.NextTurn();
+                BlackJackViewModel.Blackjack.PlayerStand();
+                BlackJackViewModel.Blackjack.NextTurn();
             }
-            if(model.Blackjack.status.Equals("win"))
+            if(BlackJackViewModel.Blackjack.status.Equals("win"))
             {
                 ch.AddToPocket(newUser.UserPocket, model.Chips, 2*model.Bet*model.Chips.Value);
             }
 
             ViewData["bet"] = model.Bet;
             ViewData["type"] = model.Chips.Type;
-            ViewData["game"] = model.Blackjack.status;
-            ViewData["score"] = model.Blackjack.playerTotal;
-            ViewData["dealer"] = model.Blackjack.dealerTotal;
+            ViewData["game"] = BlackJackViewModel.Blackjack.status;
+            ViewData["score"] = BlackJackViewModel.Blackjack.playerTotal;
+            ViewData["dealer"] = BlackJackViewModel.Blackjack.dealerTotal;
 
             if(submitButton.Equals("play"))
             {
@@ -124,6 +144,8 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult Slots()
         {
+            Slots slots = new Slots();
+            SlotsViewModel.Slots = slots;
             return View(new SlotsViewModel());
         }
         [HttpPost]
@@ -132,26 +154,26 @@ namespace Casino.Client.Controllers
             try
             {
             model = TempData.Get<SlotsViewModel>("slots");
-            string k = model.Slots.status;
+            string k = SlotsViewModel.Slots.status;
             }
             catch
             {
                 model = new SlotsViewModel();
             }
 
-            ViewData["left"] = model.Slots.left;
-            ViewData["middle"] = model.Slots.middle;
-            ViewData["right"] = model.Slots.right;
+            ViewData["left"] = SlotsViewModel.Slots.left;
+            ViewData["middle"] = SlotsViewModel.Slots.middle;
+            ViewData["right"] = SlotsViewModel.Slots.right;
 
             if(submitButton.Equals("run"))
             {
-                model.Slots.SetSlots();
+                SlotsViewModel.Slots.SetSlots();
             }
             if(submitButton.Equals("stop"))
             {
-                model.Slots.StopPlaying();
+                SlotsViewModel.Slots.StopPlaying();
             }
-            ViewData["status"] = model.Slots.status;
+            ViewData["status"] = SlotsViewModel.Slots.status;
 
             TempData.Put("slots", model);
 
@@ -161,6 +183,8 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult RockPaperScissors()
         {
+            RockPaperScissors rps = new RockPaperScissors();
+            RPSViewModel.rps = rps;
             return View(new RPSViewModel());
         }
         [HttpPost]
@@ -168,14 +192,13 @@ namespace Casino.Client.Controllers
         {
             if(submitButton == "rock" || submitButton == "paper" || submitButton == "scissors")
             {
-                model.rps.MakeChoice(submitButton);
-
-                ViewData["game"] = model.rps.status;
-                ViewData["you"] = model.rps.playerChoice;
-                ViewData["they"] = model.rps.cpuChoice;
+                RPSViewModel.rps.MakeChoice(submitButton);
+                
             }
             if (submitButton.Equals("play"))
             {
+                RockPaperScissors rps = new RockPaperScissors();
+                RPSViewModel.rps = rps;
                 return View(new RPSViewModel());
                 //ViewData["game"] = "bet";
             }
@@ -187,6 +210,8 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult RussianRoulette()
         {
+            RussianRoulette rr = new RussianRoulette();
+            RRViewModel.rr = rr;
             return View(new RRViewModel());
         }
         [HttpPost]
@@ -194,28 +219,30 @@ namespace Casino.Client.Controllers
         {
             if (submitButton == "fire")
             {
-                model.rr.NextTurn();
+                RRViewModel.rr.NextTurn();
                 
 
-                ViewData["game"] = model.rr.status;
-                if(model.rr.PlayerGun[model.rr.turn - 1])
+                ViewData["game"] = RRViewModel.rr.status;
+                if(RRViewModel.rr.PlayerGun[RRViewModel.rr.turn - 1])
                     ViewData["you"] = "BANG!";
                 else
                     ViewData["you"] = "*click*";
 
-                if (model.rr.OpponentGun[model.rr.turn - 1])
+                if (RRViewModel.rr.OpponentGun[RRViewModel.rr.turn - 1])
                     ViewData["they"] = "BANG!";
                 else
                     ViewData["they"] = "*click*";
 
-                ViewData["turn"] = model.rr.turn.ToString();
+                ViewData["turn"] = RRViewModel.rr.turn.ToString();
             }
             if (submitButton == "leave")
             {
-                model.rr.PlayerLeave();
+                RRViewModel.rr.PlayerLeave();
             }
             if (submitButton.Equals("play"))
             {
+                RussianRoulette rr = new RussianRoulette();
+                RRViewModel.rr = rr;
                 return View(new RRViewModel());
                 //ViewData["game"] = "bet";
             }
@@ -227,21 +254,25 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult ChickenFight()
         {
+            Fight fight = new Fight();
+            CFViewModel.fight = fight;
             return View(new CFViewModel());
         }
         [HttpPost]
         public IActionResult ChickenFight(CFViewModel model, string submitButton)
         {
             if (submitButton == "chickenA")
-                model.fight.PlaceBetA();
+                CFViewModel.fight.PlaceBetA();
             if (submitButton == "chickenB")
-                model.fight.PlaceBetB();
+                CFViewModel.fight.PlaceBetB();
             if (submitButton == "chickenA" || submitButton == "chickenB")
             {
-                model.fight.Engage();
+                CFViewModel.fight.Engage();
             }
             if (submitButton.Equals("play"))
             {
+                Fight fight = new Fight();
+                CFViewModel.fight = fight;
                 return View(new CFViewModel());
                 //ViewData["game"] = "bet";
             }
@@ -253,6 +284,8 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult Bingo()
         {
+            Bingo bingo = new Bingo();
+            BingoViewModel.bingo = bingo;
             return View(new BingoViewModel());
         }
         [HttpPost]
@@ -260,15 +293,17 @@ namespace Casino.Client.Controllers
         {
             if (submitButton == "start")
             {
-                model.bingo.CommenceGame();
+                BingoViewModel.bingo.CommenceGame();
             }
             if (submitButton.Equals("play"))
             {
+                Bingo bingo = new Bingo();
+                BingoViewModel.bingo = bingo;
                 return View(new BingoViewModel());
                 //ViewData["game"] = "bet";
             }
 
-            ViewData["game"] = model.bingo.status;
+            ViewData["game"] = BingoViewModel.bingo.status;
 
             TempData.Put("model", model);
 

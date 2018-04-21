@@ -4,8 +4,8 @@
 @*@await Html.PartialAsync("UserBet.cshtml", @Model);*@
 
 
-@using (@Html.BeginForm())
-{
+@*@using (@Html.BeginForm())
+{*@
     <main>
             <header class="col-md-3"></header>
             <header class="col-md-6 content">
@@ -16,19 +16,31 @@
                 <p>Slot 3: @ViewData["right"]</p>
 
 
-                @if (Model.Slots.status.Equals("playing"))
-                {
-                <button type="submit" name="submitButton" value="run">Run!</button>
-                <button type="submit" name="submitButton" value="stop">Stop</button>
-                }
-                else
-                {
-                <button type="submit" name="submitButton" value="play">Play Again</button>
-                }
+                <p id="example"></p>
+
+                <script>
+                    var x;
+                    function myTimer() {
+                        var x;
+                        x =  @SlotsViewModel.Slots.ChangeSlot();
+                        document.querySelector("#example").innerHTML = x;
+                    }
+                    var myVar = setInterval(myTimer, 1000);
+                </script>
+
+                @if (SlotsViewModel.Slots.status.Equals("playing"))
+    {
+            <button type="submit" name="submitButton" value="run">Run!</button>
+            <button type="submit" name="submitButton" value="stop">Stop</button>
+}
+else
+{
+            <button type="submit" name="submitButton" value="play">Play Again</button>
+}
 
             </header>
             <header class="col-md-3"></header>
         </main>
 
-}
+@*}*@
 
