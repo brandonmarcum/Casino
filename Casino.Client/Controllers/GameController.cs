@@ -26,17 +26,33 @@ namespace Casino.Client.Controllers
         {
             return View();
         }
-        public IActionResult UserProfile()
-        {
-            return View(new UserProfileViewModel());
-        }
         public IActionResult PlayGame()
         {
+            User newUser = new User();
+
+            try{
+				 newUser = HttpContext.Session.Get<User>("currentUser");
+				 newUser.Equals("check");
+			 }
+			 catch
+			 {
+				 return RedirectToAction("Login", "User");
+			 }
             return View();
         }
         [HttpGet]
         public IActionResult UserBet(BlackJackViewModel model)
         {
+            User newUser = new User();
+
+            try{
+				 newUser = HttpContext.Session.Get<User>("currentUser");
+				 newUser.Equals("check");
+			 }
+			 catch
+			 {
+				 return RedirectToAction("Login", "User");
+			 }
             return View(model);
         }
         [HttpPost]
@@ -49,23 +65,16 @@ namespace Casino.Client.Controllers
         public IActionResult BlackJack()
         {
             BlackJackViewModel model = new BlackJackViewModel();
+            User newUser = new User();
 
-            //BlackJackViewModel model = GameHelper.GetBlackJackViewModel().GetAwaiter().GetResult();
-            //User newUser = model.Users[0];
-            //User newUser = new User();
-            //newUser.Name = "jermine";
-            //newUser.UserPocket.AllChips[0].Amount = 237;
-            model.User.UserPocket.AllChips[0].Amount = 237; 
-            model.User.UserPocket.AllChips[1].Amount = 314;
-            model.User.UserPocket.AllChips[2].Amount = 5798;
-            model.User.UserPocket.AllChips[3].Amount = 221;
-            model.RequestId = "5";
-            //model.User = newUser;
-
-
-            
-            //GameHelper.PostBlackjackViewModel(model);
-            //Console.WriteLine(model + " " + model.RequestId);
+            try{
+				 newUser = HttpContext.Session.Get<User>("currentUser");
+				 newUser.Equals("check");
+			 }
+			 catch
+			 {
+				 return RedirectToAction("Login", "User");
+			 }
 
             ViewData["game"] = "bet";
 
@@ -121,7 +130,6 @@ namespace Casino.Client.Controllers
 
                 HttpContext.Session.Set<int>("playerTotal", model.Blackjack.playerTotal);
                 HttpContext.Session.Set<int>("dealerTotal", model.Blackjack.dealerTotal);
-
             }
             if(submitButton.Equals("stand"))
             {
@@ -154,6 +162,16 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult Slots()
         {
+            User newUser = new User();
+
+            try{
+				 newUser = HttpContext.Session.Get<User>("currentUser");
+				 newUser.Equals("check");
+			 }
+			 catch
+			 {
+				 return RedirectToAction("Login", "User");
+			 }
             return View(new SlotsViewModel());
         }
         [HttpPost]
@@ -193,6 +211,16 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult RockPaperScissors()
         {
+            User newUser = new User();
+
+            try{
+				 newUser = HttpContext.Session.Get<User>("currentUser");
+				 newUser.Equals("check");
+			 }
+			 catch
+			 {
+				 return RedirectToAction("Login", "User");
+			 }
             return View(new RPSViewModel());
         }
         [HttpPost]
@@ -219,6 +247,16 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult RussianRoulette()
         {
+            User newUser = new User();
+
+            try{
+				 newUser = HttpContext.Session.Get<User>("currentUser");
+				 newUser.Equals("check");
+			 }
+			 catch
+			 {
+				 return RedirectToAction("Login", "User");
+			 }
             return View(new RRViewModel());
         }
         [HttpPost]
@@ -259,6 +297,16 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult ChickenFight()
         {
+            User newUser = new User();
+
+            try{
+				 newUser = HttpContext.Session.Get<User>("currentUser");
+				 newUser.Equals("check");
+			 }
+			 catch
+			 {
+				 return RedirectToAction("Login", "User");
+			 }
             return View(new CFViewModel());
         }
         [HttpPost]
@@ -285,6 +333,16 @@ namespace Casino.Client.Controllers
         [HttpGet]
         public IActionResult Bingo()
         {
+            User newUser = new User();
+
+            try{
+				 newUser = HttpContext.Session.Get<User>("currentUser");
+				 newUser.Equals("check");
+			 }
+			 catch
+			 {
+				 return RedirectToAction("Login", "User");
+			 }
             return View(new BingoViewModel());
         }
         [HttpPost]
