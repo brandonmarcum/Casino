@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Casino.Library.Models;
 
 namespace Casino.Library.Games.ChickenFight
 {
@@ -9,12 +10,15 @@ namespace Casino.Library.Games.ChickenFight
         public Chicken chickenA;
         public Chicken chickenB;
         public string status;
+        public Pocket GamePocket { get; set; }
 
         public Fight()
         {
             chickenA = new Chicken();
             chickenB = new Chicken();
             status = "choosing";
+            GamePocket = new Pocket();
+            GamePocket.AllChips = new List<Chips>();
         }
 
         public void PlaceBetA()

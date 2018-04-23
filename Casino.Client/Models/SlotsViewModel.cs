@@ -1,16 +1,18 @@
-using System;
+using System.Collections.Generic;
 using Casino.Library.Games;
+using Casino.Library.Models;
 
 namespace Casino.Client.Models
 {
-    public class SlotsViewModel
+    public class SlotsViewModel: BetViewModel
     {
-        public string RequestId { get; set; }
         public Slots Slots{ get; set; }
         
         public SlotsViewModel()
         {
             Slots = new Slots();
+            User = new User();
+            Bet = new Dictionary<string, int>();
         }
     }
 }

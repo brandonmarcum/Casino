@@ -9,12 +9,14 @@ namespace Casino.Client.Models
 {
     public class BlackJackViewModel
     {
-        public string RequestId { get; set; }
-        public User User{ get; set; }
         public Blackjack Blackjack{ get; set; }
-        
+
+        public string RequestId { get; set; }
+        public User User { get; set; }
+        public string status { get; set; }
+
         [JsonIgnore]
-        public IDictionary<string, int> Bet{get; set;}
+        public IDictionary<string, int> Bet { get; set; }
         public BlackJackViewModel()
         {
             Blackjack = new Blackjack();

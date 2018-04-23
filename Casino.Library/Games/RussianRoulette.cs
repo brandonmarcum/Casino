@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Casino.Library.Models;
 
 namespace Casino.Library.Games
 {
@@ -11,6 +12,7 @@ namespace Casino.Library.Games
         public List<bool> OpponentGun;
         public int turn;
         public string status;
+        public Pocket GamePocket { get; set; }
 
         public RussianRoulette()
         {
@@ -20,6 +22,8 @@ namespace Casino.Library.Games
             LoadGuns();
             turn = 0;
             status = "playing";
+            GamePocket = new Pocket();
+            GamePocket.AllChips = new List<Chips>();
         }
 
         public void LoadGuns()
