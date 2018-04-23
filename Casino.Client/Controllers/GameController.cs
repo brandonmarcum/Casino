@@ -160,21 +160,6 @@ namespace Casino.Client.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult RockPaperScissors()
-        {
-            RPSViewModel model = new RPSViewModel();
-
-            model.User.UserPocket.AllChips[0].Amount = 237;
-            model.User.UserPocket.AllChips[1].Amount = 314;
-            model.User.UserPocket.AllChips[2].Amount = 5798;
-            model.User.UserPocket.AllChips[3].Amount = 221;
-            model.RequestId = "5";
-
-            ViewData["game"] = "bet";
-
-            return View(model);
-        }
         [HttpPost]
         public IActionResult RockPaperScissors(RPSViewModel model, IFormCollection collection, string submitButton)
         {
@@ -327,6 +312,7 @@ namespace Casino.Client.Controllers
 
             ViewData["game"] = model.Slots.status;
             HttpContext.Session.Set<IDictionary<string, int>>("bet", model.Bet);
+        }
 
         [HttpGet]
         public IActionResult RockPaperScissors()
@@ -362,8 +348,8 @@ namespace Casino.Client.Controllers
             HttpContext.Session.Set<List<Chips>>("chips", model.User.UserPocket.AllChips);
 
             return View(model);
+            }
         }
-
         
         [HttpGet]
         public IActionResult RussianRoulette()
