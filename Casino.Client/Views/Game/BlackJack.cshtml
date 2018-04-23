@@ -4,9 +4,7 @@
 @using (@Html.BeginForm())
 {
 
-    
-    @if (ViewData["game"].Equals("bet"))
-    {
+
         @await Html.PartialAsync("UserBet.cshtml", @Model);
         <button type="submit" name="submitButton" value="bet">Place Bet</button>
     }

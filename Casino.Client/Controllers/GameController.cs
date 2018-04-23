@@ -160,6 +160,7 @@ namespace Casino.Client.Controllers
             return View(model);
         }
 
+
         [HttpPost]
         public IActionResult RockPaperScissors(RPSViewModel model, IFormCollection collection, string submitButton)
         {
@@ -219,7 +220,6 @@ namespace Casino.Client.Controllers
                 ViewData["game"] = "bet";
                 model.rps.status = "playing";
                 return View(new RPSViewModel());
-                //Push
             }
 
             TempData.Put("model", model);
@@ -313,44 +313,9 @@ namespace Casino.Client.Controllers
 
             ViewData["game"] = model.Slots.status;
             HttpContext.Session.Set<IDictionary<string, int>>("bet", model.Bet);
-        }
-
-        [HttpGet]
-        public IActionResult RockPaperScissors()
-        {
-            User newUser = new User();
-
-            try{
-				 newUser = HttpContext.Session.Get<User>("currentUser");
-				 newUser.Equals("check");
-			 }
-			 catch
-			 {
-				 return RedirectToAction("Login", "User");
-			 }
-            return View(new RPSViewModel());
-        }
-        [HttpPost]
-        public IActionResult RockPaperScissors(RPSViewModel model, string submitButton)
-        {
-            if(submitButton == "rock" || submitButton == "paper" || submitButton == "scissors")
-            {
-                model.rps.MakeChoice(submitButton);
-
-            if (submitButton.Equals("play"))
-            {
-                model.Slots = new Slots();
-                ViewData["game"] = "bet";
-                return View(new SlotsViewModel());
-            }
-
-            TempData.Put("model", model);
-
-            HttpContext.Session.Set<List<Chips>>("chips", model.User.UserPocket.AllChips);
-
             return View(model);
-            }
         }
+
         
         [HttpGet]
         public IActionResult RussianRoulette()

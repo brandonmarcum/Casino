@@ -12,7 +12,6 @@ namespace Casino.Client.Models
     {
         public RockPaperScissors rps { get; set; }
         public User User { get; set; }
-        public Slots Slots{ get; set; }
         public string status { get; set; }
         public string RequestId { get; set; }
 
