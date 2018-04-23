@@ -219,6 +219,7 @@ namespace Casino.Client.Controllers
                 ViewData["game"] = "bet";
                 model.rps.status = "playing";
                 return View(new RPSViewModel());
+                //Push
             }
 
             TempData.Put("model", model);
