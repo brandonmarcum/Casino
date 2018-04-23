@@ -9,18 +9,19 @@ namespace Casino.Client.Models
 {
     public class BlackJackViewModel
     {
-        public static string RequestId { get; set; }
-        public static Blackjack Blackjack{ get; set; }
-        public static Chips Chips;
-        public static User User;
+        public Blackjack Blackjack{ get; set; }
 
-        
+        public string RequestId { get; set; }
+        public User User { get; set; }
+        public string status { get; set; }
+
         [JsonIgnore]
-        public static IDictionary<string, int> Bet{get; set;}
+        public IDictionary<string, int> Bet { get; set; }
         public BlackJackViewModel()
         {
-            Chips.Type = "white";
-            //Bet = 1;
+            Blackjack = new Blackjack();
+            User = new User();
+            Bet = new Dictionary<string, int>();
         }
     }
 }

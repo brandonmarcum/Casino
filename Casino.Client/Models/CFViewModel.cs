@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Casino.Library;
 using Casino.Library.Games.ChickenFight;
+using Casino.Library.Models;
+using Newtonsoft.Json;
 
 namespace Casino.Client.Models
 {
-    public class CFViewModel
+    public class CFViewModel : BetViewModel
     {
-        public string RequestId { get; set; }
-        public static Fight fight { get; set; }
-        public string status { get; set; }
+        public Fight fight { get; set; }
 
         public CFViewModel()
         {
+            fight = new Fight();
+            User = new User();
+            Bet = new Dictionary<string, int>();
         }
     }
 }

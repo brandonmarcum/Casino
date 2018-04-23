@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Casino.Library.Models;
 
 namespace Casino.Library.Games
 {
@@ -10,8 +11,8 @@ namespace Casino.Library.Games
         public int left { get; set; }
         public int middle { get; set; }
         public int right { get; set; }
-        public static int turn;
         public string status { get; set; }
+        public Pocket GamePocket { get; set; }
 
         public Slots()
         {
@@ -19,6 +20,8 @@ namespace Casino.Library.Games
             middle = 0;
             right = 0;
             status = "playing";
+            GamePocket = new Pocket();
+            GamePocket.AllChips = new List<Chips>();
         }
 
         public void SetLeft()

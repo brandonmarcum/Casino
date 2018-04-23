@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Casino.Library.Models;
 
 namespace Casino.Library.Games
 {
@@ -10,9 +11,12 @@ namespace Casino.Library.Games
         public string playerChoice { get; set; }
         public string cpuChoice { get; set; }
         public string status { get; set; }
+        public Pocket GamePocket { get; set; }
 
         public RockPaperScissors()
         {
+            GamePocket = new Pocket();
+            GamePocket.AllChips = new List<Chips>();
             status = "playing";
         }
 

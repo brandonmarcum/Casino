@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Casino.Library.Models;
 
 namespace Casino.Library.Games.Bingo
 {
@@ -11,14 +12,7 @@ namespace Casino.Library.Games.Bingo
         public BingoCard bingoCard;
         public string status;
         public List<int> usedNumbers;
-
-        public Bingo()
-        {
-            chipLimit = 32;
-            bingoCard = new BingoCard();
-            status = "playing";
-            usedNumbers = new List<int>();
-        }
+        public Pocket GamePocket { get; set; }
 
         public Bingo(int chips)
         {
@@ -26,6 +20,8 @@ namespace Casino.Library.Games.Bingo
             bingoCard = new BingoCard();
             status = "playing";
             usedNumbers = new List<int>();
+            GamePocket = new Pocket();
+            GamePocket.AllChips = new List<Chips>();
         }
 
         public int RollNumber()

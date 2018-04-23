@@ -1,35 +1,38 @@
-﻿@model Casino.Client.Models.RPSViewModel;
+﻿@using Casino.Library.Models;
+@model Casino.Client.Models.RPSViewModel;
 
-using @Html.BeginForm()
+@using (@Html.BeginForm())
 {
-    <main>
-       
-            @*if (ViewData["game"].Equals("bet"))
-            {
-                @await Html.PartialAsync("UserBet.cshtml", @Model);
-            }
-            else
-            {*@
-                <header class="col-md-3"></header>
-                <header class="col-md-6 content">
-                    <p>@RPSViewModel.rps.status</p>
-                    <p>You Chosed: @RPSViewModel.rps.playerChoice</p>
-                    <p>They Chosed: @RPSViewModel.rps.cpuChoice</p>
-                    @if (RPSViewModel.rps.status.Equals("playing"))
-                    {
-                        <button type="submit" name="submitButton" value="rock">Rock</button>
-                        <button type="submit" name="submitButton" value="paper">Paper</button>
-                        <button type="submit" name="submitButton" value="scissors">Scissors</button>
-                    }
-                    else
-                    {
-                        <button type="submit" name="submitButton" value="play">Play Again</button>
-                    }
-                    
-                </header>
-                <header class="col-md-3"></header>
-            @*}*@
-            
-    </main>
+<main>
+
+    @if (ViewData["game"].Equals("bet"))
+    {
+
+    @await Html.PartialAsync("UserBet.cshtml", @Model);
+    <button type="submit" name="submitButton" value="bet">Place Bet</button>
+    }
+    else
+    {
+    <header class="col-md-3"></header>
+    <header class="col-md-6 content">
+        <p>@ViewData["game"]</p>
+        <p>Your Chosed: @ViewData["you"]</p>
+        <p>They Chosed: @ViewData["they"]</p>
+        @if (Model.rps.status.Equals("playing"))
+        {
+            <button type="submit" name="submitButton" value="rock">Rock</button>
+            <button type="submit" name="submitButton" value="paper">Paper</button>
+            <button type="submit" name="submitButton" value="scissors">Scissors</button>
+        }
+        else
+        {
+            <button type="submit" name="submitButton" value="play">Play Again</button>
+        }
+
+    </header>
+    <header class="col-md-3"></header>
+    }
+
+</main>
 
 }
